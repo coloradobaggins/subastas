@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'squada One';
+    src: url('../../fonts/squada/squada-one.woff2') format('woff2'),
+         url('../../fonts/squada/squada-one.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratbold';
+    src: url('../../fonts/montserrat/montserrat-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/montserrat/montserrat-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserratlight';
+    src: url('../../fonts/montserrat/montserrat-light-webfont.woff2') format('woff2'),
+         url('../../fonts/montserrat/montserrat-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+  background: url(../images/login/background_login.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.form-container{
+  border:solid 1px #FFFFFF;
+  max-width: 330px;
+}
+
+.form-signin {
+    margin: 0 auto;
+}
+
+.form-signin a{
+  margin-top:5px;
+}
+
+.form-signin .form-signin-heading{
+  font-family: "Squada One";
+  font-size: 1.4em;
+  color:#FFFFFF;
+}
+
+.logo-container{
+  width:80px;
+  padding-top: 50px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo-container img{
+
+}
+
+.logo-container h1{
+  font-family:"montserratbold";
+  color:#FFFFFF;
+  font-size:.8em;
+  margin-top:3px;
+  padding:0;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+
+
+.clear{
+  clear: both;
+}

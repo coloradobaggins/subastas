@@ -1,0 +1,11 @@
+/* Capacitaoiones - Admin */
+
+.block-cap{
+	border:solid 1px red;
+	margin-bottom:1em;
+	padding:5px;
+}
+
+.post-cap-footer{
+	margin-top:1.5em;
+}
