@@ -7,7 +7,7 @@
     <meta name="author" content="colobaggins">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Estudio Dos - Admin</title>
+    <title>Subastas - Admin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="styles/css/general/bootstrap.min.css" rel="stylesheet">

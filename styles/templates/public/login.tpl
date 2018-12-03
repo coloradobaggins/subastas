@@ -10,7 +10,7 @@
 
     <div class="logo-container">
       <!--<img src="styles/images/general/logo_new.png" alt="">-->
-      <h1>Subastas DE PRUEBA!</h1>
+      <h1>Subastas</h1>
     </div>
     <div class="container form-container">
         <form class="form-signin">
