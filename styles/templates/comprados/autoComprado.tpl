@@ -77,25 +77,11 @@
             <li class="list-group-item active">Gastos Gestoria <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGgestoria"><span class="glyphicon glyphicon-plus"></span></button></li>
           {if isset($arrGastosGes)}
             {foreach from=$arrGastosGes item=g_gestoria}
-              <li class="list-group-item">{$g_gestoria.observacion}<span class="badge">$ {$g_gestoria.monto}</span> <span class="badge">{$g_gestoria.usrPago}</span><button id="{$g_gestoria.id}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
+              <li class="list-group-item">{$g_gestoria.observacion}<span class="badge">$ {$g_gestoria.monto}</span> <span class="badge">{$g_gestoria.usrPago}</span><button id="{$g_gestoria.id}" class="btn btn-xs btn-danger deleteGG"><span class="glyphicon glyphicon-trash"><span></button></li>
             {/foreach}
           {else}
           <li class="list-group-item">Sin datos</li>
           {/if}
-        </ul>
-
-
-        <!-- Otros Gastos -->
-        <ul class="list-group">
-          <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
-        {if isset($arrGastosOtros)}
-          {foreach from=$arrGastosOtros item=gasto}
-            <li class="list-group-item">{$gasto.observacion}<span class="badge">$ {$gasto.monto}</span> <span class="badge">{$gasto.usrPago}</span> <button id="{$gasto.id}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
-          {/foreach}
-        {else}
-        <li class="list-group-item">Sin datos</li>
-        {/if}
-
         </ul>
 
       </div>
@@ -106,7 +92,7 @@
             <li class="list-group-item active">GAstos Infracciones <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddInfr"><span class="glyphicon glyphicon-plus"></span></button></li>
           {if isset($arrGastosInfr)}
             {foreach from=$arrGastosInfr item=gastoInfr}
-              <li class="list-group-item">{$gastoInfr.observacion}<span class="badge">$ {$gastoInfr.monto}</span> <span class="badge">{$gastoInfr.usrPago}</span><button id="{$gastoInfr.id}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
+              <li class="list-group-item">{$gastoInfr.observacion}<span class="badge">$ {$gastoInfr.monto}</span> <span class="badge">{$gastoInfr.usrPago}</span><button id="{$gastoInfr.id}" class="btn btn-xs btn-danger deleteGInfr"><span class="glyphicon glyphicon-trash"><span></button></li>
             {/foreach}
           {else}
           <li class="list-group-item">Sin datos</li>
@@ -116,6 +102,23 @@
 
         </div><!-- /.col -->
       </div><!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Otros Gastos -->
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
+          {if isset($arrGastosOtros)}
+            {foreach from=$arrGastosOtros item=gasto}
+              <li class="list-group-item">{$gasto.observacion}<span class="badge">$ {$gasto.monto}</span> <span class="badge">{$gasto.usrPago}</span> <button id="{$gasto.id}" class="btn btn-xs btn-danger deleteGO"><span class="glyphicon glyphicon-trash"><span></button></li>
+            {/foreach}
+          {else}
+          <li class="list-group-item">Sin datos</li>
+          {/if}
+
+          </ul>
+        </div>
+      </div>
     </div><!-- /.container -->
 
     {include 'comprados/modalAddInfr.tpl'}

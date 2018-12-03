@@ -59,11 +59,13 @@ if(isset($_SESSION['user'])){
 	$objGastosGestoria = new AutosGastosGestoria($idAuto);
 	$arrGastoGestoria = $objGastosGestoria->getGastos();
 	if(!empty($arrGastoGestoria)){
-		foreach($arrGastosOtros as $idGasto => $datosGastoG){
+		foreach($arrGastoGestoria as $idGasto => $datosGastoG){
+
 			$arrGastoGestoria[$idGasto]["usrPago"] = $arrUsrs[$datosGastoG["id_usuario_pago"]]["nombre"];
 		}
 		$template->assign("arrGastosGes", $arrGastoGestoria);
 	}
+
 
 
 	echo "********** gastos gestoria****";

@@ -31,7 +31,7 @@ $("#btnSendGastoG").click(function(){
 	}else{
 		alert("Ingrese monto");
 	}
-	
+
 });
 
 
@@ -63,7 +63,7 @@ $("#btnSendGastoInfr").click(function(){
 	}else{
 		alert("Ingrese monto");
 	}
-	
+
 });
 
 // Gastos otros
@@ -94,5 +94,29 @@ $("#btnSendGastoO").click(function(){
 	}else{
 		alert("Ingrese monto");
 	}
-	
+
 });
+
+
+//Borrar GAstos
+//Gastos gestoria
+$('.deleteGG').click(function(){
+	var id=this.id;
+	deleteGastos("gastoG", id);
+});
+
+//Gastos Otros
+$('.deleteGO').click(function(){
+	var id=this.id;
+	deleteGastos("gastoO", id);
+});
+
+//Gastos infr
+$('.deleteGInfr').click(function(){
+	var id=this.id;
+	deleteGastos("gastoInfr", id);
+});
+
+function deleteGastos(tipo, id){
+	console.log("Borrar gasto, tipo: "+tipo+" - id: "+id);
+}
