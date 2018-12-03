@@ -5,6 +5,7 @@ if(isset($_SESSION['user'])){
 	include('core/models/AutosGastosOtros.class.php');
 	include('core/models/AutosGastosGestoria.class.php');
 	include('core/models/AutosGastosInfr.class.php');
+	include('core/models/Utils.class.php');
 	include('core/models/Usuarios.class.php');
   $template = new Smarty();
   $template->error_reporting = E_ALL & ~E_NOTICE;
@@ -15,6 +16,12 @@ if(isset($_SESSION['user'])){
 
   $objAutoComprado = new AutoComprado($idAuto);
   $arrayDatosAuto = $objAutoComprado->getDatosAuto();
+
+
+	$objUtils = new Utils();
+	$arrComb = $objUtils->getCombustibles();
+
+	$arrayDatosAuto["combustible"] = $arrComb[$arrayDatosAuto["id_combustible"]]["nombre"];
 
 	$objUsuarios = new Usuarios();
 	$arrUsrs = $objUsuarios->getUsuarios();
@@ -64,8 +71,8 @@ if(isset($_SESSION['user'])){
   print_r($arrGastoGestoria);
   echo "</pre>";
 
-  	
-  	
+
+
 	$template->assign("arrUsrs", $arrUsrs);
 	$template->assign("arrDatosAuto", $arrayDatosAuto);
 

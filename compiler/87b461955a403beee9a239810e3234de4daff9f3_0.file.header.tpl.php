@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-03 10:42:31
+<?php /* Smarty version 3.1.27, created on 2018-12-03 10:58:18
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/overall/header.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:10322658625c0532c73d82b0_61364331%%*/
+/*%%SmartyHeaderCode:1243069645c05367a706405_39423619%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '87b461955a403beee9a239810e3234de4daff9f3' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/overall/header.tpl',
-      1 => 1537328818,
+      1 => 1543845442,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '10322658625c0532c73d82b0_61364331',
+  'nocache_hash' => '1243069645c05367a706405_39423619',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0532c73dba68_41890974',
+  'unifunc' => 'content_5c05367a70baf2_15940605',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0532c73dba68_41890974')) {
-function content_5c0532c73dba68_41890974 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c05367a70baf2_15940605')) {
+function content_5c05367a70baf2_15940605 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '10322658625c0532c73d82b0_61364331';
+$_smarty_tpl->properties['nocache_hash'] = '1243069645c05367a706405_39423619';
 ?>
 
     <meta charset="utf-8">
@@ -33,7 +33,7 @@ $_smarty_tpl->properties['nocache_hash'] = '10322658625c0532c73d82b0_61364331';
     <meta name="author" content="colobaggins">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Estudio Dos - Admin</title>
+    <title>Subastas - Admin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="styles/css/general/bootstrap.min.css" rel="stylesheet">

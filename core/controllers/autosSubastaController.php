@@ -29,9 +29,11 @@ if(isset($_SESSION['user'])){
   $objAutosSubasta = new AutosSubasta();
   $arrayAutos = $objAutosSubasta->getDatosAutos();
 
+  /*
   echo "<pre>";
   print_r($arrayAutos);
-  echo "</pre>";
+  echo "</pre>";*/
+  
 
   $objUsuarios = new Usuarios();
   $arrayUsuarios = $objUsuarios->getUsuarios();

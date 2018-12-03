@@ -45,7 +45,7 @@
                   <td>{$arrDatosAuto.ano}</td>
                   <td>{$arrDatosAuto.dominio}</td>
                   <td>{$arrDatosAuto.kms}</td>
-                  <td>{$arrDatosAuto.id_comustible}</td>
+                  <td>{$arrDatosAuto.combustible}</td>
                   <td>{$arrDatosAuto.monto}</td>
                   <td>{$arrDatosAuto.nombre}</td>
                   <td>{$arrDatosAuto.fecha_compra}</td>
@@ -62,7 +62,11 @@
       </div>
     </div><!-- /.container -->
 
-
+    <div>
+      <ul>
+        <li>Radicacion: {$arrDatosAuto.radicacion}</li>
+      </ul>
+    </div>
 
     <div class="container">
       <div class="row">

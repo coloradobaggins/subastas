@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-03 10:50:51
+<?php /* Smarty version 3.1.27, created on 2018-12-03 10:58:18
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/public/login.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:9630565045c0534bbb102e3_07895234%%*/
+/*%%SmartyHeaderCode:10676951345c05367a6cf510_76243464%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '27e9fededc5f0d68662baa1de3f1c73acf996243' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/public/login.tpl',
-      1 => 1543845042,
+      1 => 1543845420,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9630565045c0534bbb102e3_07895234',
+  'nocache_hash' => '10676951345c05367a6cf510_76243464',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0534bbb432e3_78710075',
+  'unifunc' => 'content_5c05367a701267_82280772',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0534bbb432e3_78710075')) {
-function content_5c0534bbb432e3_78710075 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c05367a701267_82280772')) {
+function content_5c05367a701267_82280772 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '9630565045c0534bbb102e3_07895234';
+$_smarty_tpl->properties['nocache_hash'] = '10676951345c05367a6cf510_76243464';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +38,7 @@ $_smarty_tpl->properties['nocache_hash'] = '9630565045c0534bbb102e3_07895234';
 
     <div class="logo-container">
       <!--<img src="styles/images/general/logo_new.png" alt="">-->
-      <h1>Subastas DE PRUEBA!</h1>
+      <h1>Subastas</h1>
     </div>
     <div class="container form-container">
         <form class="form-signin">

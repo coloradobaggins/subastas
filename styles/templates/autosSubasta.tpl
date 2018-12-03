@@ -34,7 +34,6 @@
                         <th>Posible Ganancia</th>
                         <th>Puja</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,12 +63,9 @@
                           </td>
                           <td>
                             {if $auto.comprado==0}
-                              <button id="{$auto.id}" data-toggle="modal" data-target="#modalAddPuja" class="btn btn-success btn-xs addPuja" title="Actualizar"><span class="glyphicon glyphicon-check"></span></button>
-                            {/if}
-                          </td>
-                          <td>
-                            {if $auto.comprado==0}
-                              <button class="btn btn-info btn-xs"><span class="glyphicon glyphicon-option-vertical"></span></button>
+                              <button id="{$auto.id}" data-toggle="modal" data-target="#modalAddPuja" class="btn btn-info btn-xs addPuja" title="Actualizar"><span class="glyphicon glyphicon-check"></span></button>
+                            {else}
+                              <span class="label label-success">Comprado</span>
                             {/if}
                           </td>
                       </tr>
@@ -79,39 +75,38 @@
                             <div class="accordian-body collapse" id="auto{$auto.id}">
                                 <div class="container">
                                   <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                       <p>La posible ganancia es calculada segun los precios de autos cargados para este vehiculo.<br />
                                       Para verlos entrar en los detalles.</p>
 
                                     </div><!-- /.col-->
+                                  </div><!-- /.row-->
 
-                                    <div class="col-md-6">
+                                  <div class="row">
+                                    <div class="col-md-4">
 
                                       <div class="bs-callout bs-callout-warning">
                                         <p>Total + deuda + gestoria + otros Gastos</p>
                                          <h4><b>$ {$auto.totalAPagarMasDeuda + $auto.gastos_aprox_gestor}</b></h4>
                                       </div>
-
+                                    </div><!-- /.col -->
+                                    <div class="col-md-4">
                                       <div class="bs-callout bs-callout-info">
                                         <p>Fecha de cierre:</p>
                                         <h4><b>{$auto.fecha_cierre} {$auto.hora_cierre}</b></h4>
-
                                       </div>
-
-                                      <div class="bs-callout bs-callout-info">
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="bs-callout bs-callout-danger">
                                         <ul>
                                           <li>A&ntilde;o: {$auto.ano}</li>
                                           <li>Combustible: {$auto.combustible}</li>
                                           <li>Kms: {$auto.kms}</li>
-                                          <li>Arranca: {if $auto.arranca == 1}Si{else}No{/if}</li>
-                                          <li>Precio Lista (DNRPA): <b>$ {$auto.precio_lista}</b></li>
                                         </ul>
                                       </div>
+                                    </div>
 
-
-                                    </div><!-- /.col -->
-
-                                  </div><!-- /.row-->
+                                  </div><!-- /.row -->
 
                                   <div class="row">
                                     <div class="col-md-12">
@@ -119,12 +114,14 @@
                                       <div class="row">
                                         <div class="col-md-6">
                                           <ul>
-                                          <li>Observaciones: {$auto.observacion}</li>
-                                          <li>Observaciones Visitas: {$auto.visita_observaciones}</li>
-                                          <li>Puntaje Visita</li>
-                                          <li>Url sitio</li>
-                                          <li>Cargado por: {$auto.usuario}</li>
-                                        </ul>
+                                            <li>Arranca: {if $auto.arranca == 1}Si{else}No{/if}</li>
+                                            <li>Precio Lista (DNRPA): <b>$ {$auto.precio_lista}</b></li>
+                                            <li>Observaciones: {$auto.observacion}</li>
+                                            <li>Observaciones Visitas: {$auto.visita_observaciones}</li>
+                                            <li>Puntaje Visita</li>
+                                            <li>Url sitio</li>
+                                            <li>Cargado por: {$auto.usuario}</li>
+                                          </ul>
                                         </div>
                                         <div class="col-md-6">
                                           <!--
