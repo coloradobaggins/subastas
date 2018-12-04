@@ -119,4 +119,27 @@ $('.deleteGInfr').click(function(){
 
 function deleteGastos(tipo, id){
 	console.log("Borrar gasto, tipo: "+tipo+" - id: "+id);
+
+	$urlContr = "";
+	if(tipo=="gastoG"){
+		$urlContr = "deleteGastoG=true&id="+id;
+	}else if(tipo=="gastoO"){
+		$urlContr = "deleteGastoO=true&id="+id;
+	}else if(tipo==gastoInfr){
+		$urlContr = "deleteGastoInfr=true&id"+id
+	}
+
+	$.ajax({
+		url:"?view=utoAdquirido/abmAutoAdquirido",
+		data:urlContr,
+		type:"post",
+		dataType:"text",
+		success:function(response){
+			console.log(response);
+		},
+		timeout:4000,
+		error:function(){
+			alert("Error de conexion, intentelo mas tarde");
+		}
+	});
 }

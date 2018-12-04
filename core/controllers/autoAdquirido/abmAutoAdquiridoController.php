@@ -1,12 +1,12 @@
 <?php
 if(isset($_SESSION['user'])){
 
-	
+
 	include('core/models/GastosGestoria.class.php');
 	include('core/models/GastosInfracciones.class.php');
 	include('core/models/GastosOtros.class.php');
 	include('core/models/Usuarios.class.php');
-  	
+
 
 	//Gastos gestoria
 	if(isset($_POST["addGastoG"])){
@@ -55,6 +55,10 @@ if(isset($_SESSION['user'])){
 		}
 
 	}
+
+
+	//**************************************************/
+	//Delete gastos
 
 
 }else{
