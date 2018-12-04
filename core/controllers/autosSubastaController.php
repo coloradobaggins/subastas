@@ -13,7 +13,7 @@ include("core/models/AutosComprado.class.php");
 include("core/models/GastosAdm.class.php");
 include("core/models/Usuarios.class.php");
 include("core/models/ValorCalle.class.php");
-include("core/models/OtrosGastos.class.php");
+include("core/models/SubastaGastosOtros.class.php");
 include("core/models/Utils.class.php");
 
 if(isset($_SESSION['user'])){
@@ -33,7 +33,7 @@ if(isset($_SESSION['user'])){
   echo "<pre>";
   print_r($arrayAutos);
   echo "</pre>";*/
-  
+
 
   $objUsuarios = new Usuarios();
   $arrayUsuarios = $objUsuarios->getUsuarios();
@@ -41,7 +41,7 @@ if(isset($_SESSION['user'])){
   $objGastosAdm = new GastosAdm();
 
   //Otros gastos subastas autos
-  $objOtrosGastosSubastas = new OtrosGastos();
+  $objOtrosGastosSubastas = new SubastaGastosOtros();
 
   $iva = 21;
   $gastosMasIva = 0;

@@ -1,5 +1,6 @@
 <?php
-
+//NO se la diferencia entre esta clase y AutosGastosOtros.class.php !!!
+//No uso mas esta, uso la otra.
 class GastosOtros{
 
 	private $id;
@@ -35,12 +36,12 @@ class GastosOtros{
 		if(!$stmt->errno){
 			while($stmt->fetch()){
 				$arrayResponse[$id] = array(
-					"id"	=> $id, 
-					"id_auto"	=> $id_auto, 
-					"id_usuario_pago"	=> $id_usuario_pago, 
-					"monto"	=> $monto, 
-					"observacion"	=> $observacion, 
-					"pagado"	=> $pagado, 
+					"id"	=> $id,
+					"id_auto"	=> $id_auto,
+					"id_usuario_pago"	=> $id_usuario_pago,
+					"monto"	=> $monto,
+					"observacion"	=> $observacion,
+					"pagado"	=> $pagado,
 					"fecha_realizacion"	=> $fecha_realizacion
 				);
 			}
@@ -96,7 +97,7 @@ class GastosOtros{
 
 
 
-	
+
 }
 
 ?>

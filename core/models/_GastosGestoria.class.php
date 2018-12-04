@@ -1,5 +1,6 @@
 <?php
-
+//NO se la diferencia entre esta clase y AutosGastosGestoria.class.php !!!
+//No uso mas esta, uso la otra.
 class GastosGestoria{
 
 	private $id;
@@ -38,11 +39,11 @@ class GastosGestoria{
 		if(!$stmt->errno){
 			while($stmt->fetch()){
 				$arrayResponse[$id] = array(
-					"id"	=> $id, 
-					"id_auto"	=> $id_auto, 
-					"id_usuario_pago"	=> $id_usuario_pago, 
-					"monto"	=> $monto, 
-					"observacion"	=> $observacion, 
+					"id"	=> $id,
+					"id_auto"	=> $id_auto,
+					"id_usuario_pago"	=> $id_usuario_pago,
+					"monto"	=> $monto,
+					"observacion"	=> $observacion,
 					"pagado"	=> $pagado,
 					"fecha_pago"	=> $fecha_pago
 				);
@@ -60,13 +61,13 @@ class GastosGestoria{
 	public function addGastosGestoria($usuarioPago, $monto, $observacion, $pagado, $fechaPago){
 		$idAuto = $this->id_auto;
 
-		
+
 		$fechaCarga = date('Y-m-d');
 		$horaCarga = date('H:i:s');
 		$usuarioCarga = $_SESSION["id"];
 
 		$sql = "INSERT INTO autos_gastos_gestoria
-				(id_auto, id_usuario_pago, monto,observacion, pagado, 
+				(id_auto, id_usuario_pago, monto,observacion, pagado,
 				 fecha_pago,fecha, hora, id_usuario, estado) VALUES(?,?,?,?,?,?,?,?,?,1)";
 
 		$stmt = $this->objConexion->mysqli->prepare($sql);

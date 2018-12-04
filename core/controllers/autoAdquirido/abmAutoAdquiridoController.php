@@ -58,7 +58,21 @@ if(isset($_SESSION['user'])){
 
 
 	//**************************************************/
-	//Delete gastos
+	//Delete gastos de auto
+	//Gasto gestoria
+	if(isset($_POST['deleteGastoG'])){
+		$objGastosGestoria = new GastosGestoria();
+	}
+
+	//Gastos otros
+	if(isset($_POST['deleteGastoO'])){
+
+	}
+
+	//Gastos infraccion
+	if(isset($_POST['deleteGastoInfr'])){
+
+	}
 
 
 }else{

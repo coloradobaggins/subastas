@@ -120,17 +120,17 @@ $('.deleteGInfr').click(function(){
 function deleteGastos(tipo, id){
 	console.log("Borrar gasto, tipo: "+tipo+" - id: "+id);
 
-	$urlContr = "";
+	var urlContr = "";
 	if(tipo=="gastoG"){
-		$urlContr = "deleteGastoG=true&id="+id;
+		urlContr = "deleteGastoG=true&id="+id;
 	}else if(tipo=="gastoO"){
-		$urlContr = "deleteGastoO=true&id="+id;
-	}else if(tipo==gastoInfr){
-		$urlContr = "deleteGastoInfr=true&id"+id
+		urlContr = "deleteGastoO=true&id="+id;
+	}else if(tipo=="gastoInfr"){
+		urlContr = "deleteGastoInfr=true&id"+id
 	}
 
 	$.ajax({
-		url:"?view=utoAdquirido/abmAutoAdquirido",
+		url:"?view=autoAdquirido/abmAutoAdquirido",
 		data:urlContr,
 		type:"post",
 		dataType:"text",

@@ -14,7 +14,7 @@
 *
 **********/
 
-class OtrosGastos
+class SubastaGastosOtros
 {
   private $objConexion;
     public function __construct(){

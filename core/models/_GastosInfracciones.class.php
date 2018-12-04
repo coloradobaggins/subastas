@@ -1,5 +1,6 @@
 <?php
-
+//NO se la diferencia entre esta clase y AutosGastosInfr.class.php !!!
+//No uso mas esta, uso la otra.
 class GastosInfracciones{
 
 	private $id;
