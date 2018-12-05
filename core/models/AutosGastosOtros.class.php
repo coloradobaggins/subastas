@@ -29,30 +29,31 @@ class AutosGastosOtros{
     $this->objConexion = Conexion::getInstance();
   }
 
-  public function addGasto($usr, $monto, $detalle, $pagado, $fechaPago){
+  public function addOtrosGastos($usuarioPago, $monto, $obs, $pagado, $fechaPago){
 
-    if($this->id_auto!==0){
-        $idAuto = $this->id_auto;
-    }else{
-      throw new Exception("Setear correctamente id_auto",1);
-    }
 
-    $fecha = date("Y-m-d");
-    $hora = date("H:i:s");
-    $usrCarga = $_SESSION["id"];
+		$idAuto = $this->id_auto;
 
-    $sql = "INSERT INTO autos_gastos_otros(id_auto, id_usuario_pago, monto, observacion, pagado, fecha_realizacion, fecha, hora, id_usuario, estado)
-            VALUES(?, ?, ?, ?, ?, ? , ?, ?, ?, 1)";
-    $stmt = $this->objConexion->mysqli->prepare($sql);
-    $stmt->bind_param('iiisisssi', $idAuto, $usr, $monto, $detalle, $pagado, $fechaPago, $fecha, $hora, $usrCarga);
-    $stmt->execute();
-    if(!$stmt->errno){
-      return 1;
-    }else{
-      throw new Exception("Error al agregar gasto, ".$stmt->error, $stmt->errno);
-    }
+		$fechaCarga = date("Y-m-d");
+		$horaCarga = date("H:i:s");
+		$usuarioCarga = $_SESSION["id"];
 
-  }
+		$sql = "INSERT INTO autos_gastos_otros
+				(id_auto, id_usuario_pago, monto, observacion, pagado, fechaPago, fecha, hora, id_usuario, estado)
+				 VALUES(?,?,?,?,?,?,?,?,?,1)";
+		$stmt = $this->objConexion->mysqli->prepare($sql);
+		$stmt->bind_param('iiisisssi', $idAuto, $usuarioPago, $monto, $obs, $pagado, $fechaPago, $fechaCarga, $horaCarga, $usuarioCarga);
+		$stmt->execute();
+
+		if(!$stmt->errno){
+			return 1;
+		}else{
+			throw new Exception("Error al ingresar infraccion, ".$stmt->error, $stmt->errno);
+		}
+		$stmt->free_result();
+		$stmt->close();
+
+	}
 
   public function getGastos($f_estado=1){
     $idAuto = $this->id_auto;

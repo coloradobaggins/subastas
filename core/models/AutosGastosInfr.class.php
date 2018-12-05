@@ -70,12 +70,44 @@ class AutosGastosInfr{
   }
 
 
-  public function addInfr($usr, $monto, $detalle, $pagado, $fechaPago){
+  public function addInfraccion($usuarioPago, $monto, $fInfraccion, $lugar, $obs, $pagado=0){
+		$idAuto = $this->id_auto;
 
-    $sql = "INSERT INTO autos_gastos_infracciones() VALUES()";
-    $stmt = $this->objConexion->mysqli->prepare($sql);
+		$fechaCarga = date("Y-m-d");
+		$horaCarga = date("H:i:s");
+		$usuarioCarga = $_SESSION["id"];
 
-  }
+		$sql = "INSERT INTO autos_gastos_infracciones
+				(id_auto, id_usuario_pago, monto, fecha_infraccion, lugar,
+				observacion, pagado, fecha, hora, id_usuario, estado) VALUES(?,?,?,?,?,?,?,?,?,?,1)";
+		$stmt = $this->objConexion->mysqli->prepare($sql);
+		$stmt->bind_param('iiisssissi', $idAuto, $usuarioPago, $monto, $fInfraccion, $lugar, $obs, $pagado, $fechaCarga, $horaCarga, $usuarioCarga);
+		$stmt->execute();
+
+		if(!$stmt->errno){
+			return 1;
+		}else{
+			throw new Exception("Error al ingresar infraccion, ".$stmt->error, $stmt->errno);
+		}
+		$stmt->free_result();
+		$stmt->close();
+
+	}
+
+  //CORREGIR, QUE NO SE BORRE, QUE CAMBIE EL ESTADO A 0
+  public function deleteInfraccion($idInfr){
+		$sql = "DELETE FROM autos_gastos_infracciones WHERE id = ?";
+		$stmt = $this->objConexion->mysqli->prepare($sql);
+		$stmt->bind_param("i", $idInfr);
+		$stmt->execute();
+		if(!$stmt->errno){
+			return 1;
+		}else{
+			throw new Exception("Error al borrar infraccion, ".$stmt->error, $stmt->errno);
+		}
+		$stmt->free_result();
+		$stmt->close();
+	}
 
 }
 

@@ -2,9 +2,9 @@
 if(isset($_SESSION['user'])){
 
 
-	include('core/models/GastosGestoria.class.php');
-	include('core/models/GastosInfracciones.class.php');
-	include('core/models/GastosOtros.class.php');
+	include('core/models/AutosGastosGestoria.class.php');
+	include('core/models/AutosGastosInfr.class.php');
+	include('core/models/AutosGastosOtros.class.php');
 	include('core/models/Usuarios.class.php');
 
 
@@ -13,7 +13,7 @@ if(isset($_SESSION['user'])){
 		extract($_POST);
 
 
-		$objGastosGestoria = new GastosGestoria($idAuto);
+		$objGastosGestoria = new AutosGastosGestoria($idAuto);
 		try{
 
 			echo $objGastosGestoria->addGastosGestoria($userPago, $monto, $detalle, $pagado, $fPago);
@@ -28,7 +28,7 @@ if(isset($_SESSION['user'])){
 	if(isset($_POST["addGastoDInfr"])){
 		extract($_POST);
 
-		$objGInfr = new GastosInfracciones($idAuto);
+		$objGInfr = new AutosGastosInfr($idAuto);
 
 		try{
 
@@ -44,7 +44,7 @@ if(isset($_SESSION['user'])){
 	if(isset($_POST["addGastoOtros"])){
 		extract($_POST);
 
-		$objGastosOtros = new GastosOtros($idAuto);
+		$objGastosOtros = new AutosGastosOtros($idAuto);
 
 		try{
 

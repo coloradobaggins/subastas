@@ -14,6 +14,8 @@ if(isset($_SESSION['user'])){
 
   $idAuto = $_GET["idComprado"];
 
+	$arrGastosPorUsr = array(); //Guardar gastos por usuario
+
   $objAutoComprado = new AutoComprado($idAuto);
   $arrayDatosAuto = $objAutoComprado->getDatosAuto();
 
@@ -34,24 +36,38 @@ if(isset($_SESSION['user'])){
 	$objGastosOtros = new AutosGastosOtros($idAuto);
 	$arrGastosOtros = $objGastosOtros->getGastos();
 	if(!empty($arrGastosOtros)){
+		$sumGastosO = 0;
 		foreach($arrGastosOtros as $idGasto => $datosGasto){
+			$sumGastosO += $datosGasto["monto"];
 			$arrGastosOtros[$idGasto]["usrPago"] = $arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"];
+
+			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGasto["monto"];
 		}
+		$template->assign("sumGastosO", $sumGastosO);
 		$template->assign("arrGastosOtros", $arrGastosOtros);
 	}
 
+	echo "********** gastos otros****";
+	echo "<pre>";
+  print_r($arrGastosOtros);
+  echo "</pre>";
 
 	$objGastosInfr = new AutosGastosInfr($idAuto);
 	$arrGastosInfr = $objGastosInfr->getInfracciones();
 	if(!empty($arrGastosInfr)){
+		$sumGastosInfr = 0;
 		foreach($arrGastosInfr as $idGasto => $datosGasto){
+			$sumGastosInfr += $datosGasto["monto"];
 			$arrGastosInfr[$idGasto]["usrPago"] = $arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"];
+
+			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGasto["monto"];
 		}
+		$template->assign("sumGastosInfr", $sumGastosInfr);
 		$template->assign("arrGastosInfr", $arrGastosInfr);
 	}
 
-	echo "********** gastos Infr****";
-	echo "<pre>";
+		echo "********** gastos Infr****";
+		echo "<pre>";
   	print_r($arrGastosInfr);
   	echo "</pre>";
 
@@ -59,13 +75,20 @@ if(isset($_SESSION['user'])){
 	$objGastosGestoria = new AutosGastosGestoria($idAuto);
 	$arrGastoGestoria = $objGastosGestoria->getGastos();
 	if(!empty($arrGastoGestoria)){
+		$sumGastosG = 0;
 		foreach($arrGastoGestoria as $idGasto => $datosGastoG){
-
+			$sumGastosG += $datosGastoG["monto"];
 			$arrGastoGestoria[$idGasto]["usrPago"] = $arrUsrs[$datosGastoG["id_usuario_pago"]]["nombre"];
+
+			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGastoG["monto"];
 		}
+		$template->assign("sumGastosG", $sumGastosG);
 		$template->assign("arrGastosGes", $arrGastoGestoria);
 	}
 
+	foreach($arrGastosPorUsr as $idUsr => $datos){
+		$arrGastosPorUsr[$idUsr]["nombre"] = $arrUsrs[$idUsr]["nombre"];
+	}
 
 
 	echo "********** gastos gestoria****";
@@ -74,7 +97,12 @@ if(isset($_SESSION['user'])){
   echo "</pre>";
 
 
+	echo "********** gastos x Usuario****";
+	echo "<pre>";
+  print_r($arrGastosPorUsr);
+  echo "</pre>";
 
+	$template->assign("arrGastosPorUsr", $arrGastosPorUsr);
 	$template->assign("arrUsrs", $arrUsrs);
 	$template->assign("arrDatosAuto", $arrayDatosAuto);
 

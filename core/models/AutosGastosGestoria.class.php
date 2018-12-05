@@ -30,29 +30,29 @@ class AutosGastosGestoria{
   }
 
 
-  public function addGasto($usr, $monto, $detalle, $pagado, $fechaPago){
+  public function addGastosGestoria($usuarioPago, $monto, $observacion, $pagado, $fechaPago){
+    $idAuto = $this->id_auto;
 
-    if($this->id_auto!==0){
-        $idAuto = $this->id_auto;
-    }else{
-      throw new Exception("Setear correctamente id_auto",1);
-    }
 
-    $fecha = date("Y-m-d");
-    $hora = date("H:i:s");
-    $usrCarga = $_SESSION["id"];
+    $fechaCarga = date('Y-m-d');
+    $horaCarga = date('H:i:s');
+    $usuarioCarga = $_SESSION["id"];
 
-    $sql = "INSERT INTO autos_gastos_gestoria(id_auto, id_usuario_pago, monto, observacion, pagado, fecha_pago, fecha, hora, id_usuario, estado)
-            VALUES(?, ?, ?, ?, ?, ? , ?, ?, ?, 1)";
+    $sql = "INSERT INTO autos_gastos_gestoria
+        (id_auto, id_usuario_pago, monto,observacion, pagado,
+         fecha_pago,fecha, hora, id_usuario, estado) VALUES(?,?,?,?,?,?,?,?,?,1)";
+
     $stmt = $this->objConexion->mysqli->prepare($sql);
-    $stmt->bind_param('iiisisssi', $idAuto, $usr, $monto, $detalle, $pagado, $fechaPago, $fecha, $hora, $usrCarga);
+    $stmt->bind_param("iiisisssi", $idAuto, $usuarioPago, $monto, $observacion, $pagado, $fechaPago, $fechaCarga, $horaCarga, $usuarioCarga);
     $stmt->execute();
+
     if(!$stmt->errno){
       return 1;
     }else{
-      throw new Exception("Error al agregar gasto, ".$stmt->error, $stmt->errno);
+      throw new Exception("Error al ingresar gastos gestoria, ".$stmt->error, $stmt->errno);
     }
-
+    $stmt->free_result();
+    $stmt->close();
   }
 
 

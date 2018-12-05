@@ -11,7 +11,6 @@
   <div class="container">
     <div class="row">
 
-      <h2>Comprado - Detalle</h2>
     </div>
   </div>
 
@@ -19,87 +18,52 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          {if isset($arrDatosAuto)}
-
-          <table class="table">
-
-              <thead>
-                  <tr>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>A&ntilde;o</th>
-                      <th>DOM</th>
-                      <th>KMS</th>
-                      <th>Comustible</th>
-                      <th>Monto</th>
-                      <th>Comprador</th>
-                      <th>Fecha Compra</th>
-
-                  </tr>
-              </thead>
-              <tbody>
-
-                <tr>
-                  <td>{$arrDatosAuto.marca}</td>
-                  <td>{$arrDatosAuto.modelo}</td>
-                  <td>{$arrDatosAuto.ano}</td>
-                  <td>{$arrDatosAuto.dominio}</td>
-                  <td>{$arrDatosAuto.kms}</td>
-                  <td>{$arrDatosAuto.combustible}</td>
-                  <td>{$arrDatosAuto.monto}</td>
-                  <td>{$arrDatosAuto.nombre}</td>
-                  <td>{$arrDatosAuto.fecha_compra}</td>
-                </tr>
-
-              </tbody>
-            </table>
-
-
-          {else}
-            <p>Sin datos</p>
-          {/if}
+          <h2>Comprado - Detalle <button class="btn btn-xs btn-warning pull-right">Actualizar datos</button></h2>
         </div>
       </div>
     </div><!-- /.container -->
 
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <p>Algun otro dato</p>
-        </div>
+        {if isset($arrDatosAuto)}
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">Marca: {$arrDatosAuto.marca}</li>
+              <li class="list-group-item">Modelo: {$arrDatosAuto.modelo}</li>
+              <li class="list-group-item">Dominio: {$arrDatosAuto.dominio}</li>
+              <li class="list-group-item">Radicacion: {$arrDatosAuto.radicacion}</li>
+            </ul>
+          </div>
 
-        <div class="col-md-4">
-          <h4>Detalles publicados</h4>
-          <p>{$arrDatosAuto.observacion}</p>
-        </div>
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">A&Ntilde;O: {$arrDatosAuto.ano}</li>
+              <li class="list-group-item">KMS: {$arrDatosAuto.kms}</li>
+              <li class="list-group-item">Combustible: {$arrDatosAuto.combustible}</li>
+            </ul>
+          </div>
 
-        <div class="col-md-4">
-          <h4>Detalles Visitas (dato subasta)</h4>
-          <p>Detalle de subasta</p>
-        </div>
-      </div>
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">Monto: $ {$arrDatosAuto.monto}</li>
+              <li class="list-group-item">Comprador: {$arrDatosAuto.nombre}</li>
+              <li class="list-group-item">Fecha Compra: {$arrDatosAuto.combustible}</li>
+            </ul>
+          </div>
+        {else}
+          <div class="col-md-12">
+            <div class="alert alert-warning">
+              <p>Sin datos</p>
+            </div>
+          </div>
+        {/if}
+
+      </div><!-- /.row -->
     </div><!-- /.container -->
 
 
 
     <div class="container">
-
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Otros Gastos -->
-          <ul class="list-group">
-            <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
-          {if isset($arrGastosOtros)}
-            {foreach from=$arrGastosOtros item=gasto}
-              <li class="list-group-item"><button id="{$gasto.id}" class="btn btn-xs btn-danger pull-right deleteGO"><span class="glyphicon glyphicon-trash"><span></button> {$gasto.observacion}<span class="badge">$ {$gasto.monto}</span> <span class="badge">{$gasto.usrPago}</span></li>
-            {/foreach}
-          {else}
-          <li class="list-group-item">Sin datos</li>
-          {/if}
-
-          </ul>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-md-6">
@@ -111,6 +75,7 @@
             {foreach from=$arrGastosGes item=g_gestoria}
               <li class="list-group-item"><button id="{$g_gestoria.id}" class="btn btn-xs btn-danger pull-right deleteGG"><span class="glyphicon glyphicon-trash"><span></button> {$g_gestoria.observacion}<span class="badge">$ {$g_gestoria.monto}</span> <span class="badge">{$g_gestoria.usrPago}</span></li>
             {/foreach}
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ {$sumGastosG}</span></li>
           {else}
           <li class="list-group-item">Sin datos</li>
           {/if}
@@ -126,6 +91,7 @@
             {foreach from=$arrGastosInfr item=gastoInfr}
               <li class="list-group-item"><button id="{$gastoInfr.id}" class="btn btn-xs btn-danger deleteGInfr"><span class="glyphicon glyphicon-trash"><span></button> {$gastoInfr.observacion}<span class="badge">$ {$gastoInfr.monto}</span> <span class="badge">{$gastoInfr.usrPago}</span></li>
             {/foreach}
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ {$sumGastosInfr}</span></li>
           {else}
           <li class="list-group-item">Sin datos</li>
           {/if}
@@ -135,7 +101,42 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
 
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Otros Gastos -->
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
+          {if isset($arrGastosOtros)}
+            {foreach from=$arrGastosOtros item=gasto}
+              <li class="list-group-item"><button id="{$gasto.id}" class="btn btn-xs btn-danger pull-right deleteGO"><span class="glyphicon glyphicon-trash"><span></button> {$gasto.observacion}<span class="badge">$ {$gasto.monto}</span> <span class="badge">{$gasto.usrPago}</span></li>
+            {/foreach}
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ {$sumGastosO}</span></li>
+          {else}
+          <li class="list-group-item">Sin datos</li>
+          {/if}
+
+          </ul>
+        </div>
+      </div>
+
     </div><!-- /.container -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Resumenes de gastos</h4>
+          {if isset($arrGastosPorUsr)}
+          <ul>
+            {foreach from=$arrGastosPorUsr item=usr}
+              <li></li>
+            {/foreach}
+          </ul>
+          {else}
+          <p>Sin datos</p>
+          {/if}
+        </div>
+      </div>
+    </div>
 
     {include 'comprados/modalAddInfr.tpl'}
     {include 'comprados/modalAddGastoGestoria.tpl'}
