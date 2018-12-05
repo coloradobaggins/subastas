@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-05 01:13:05
+<?php /* Smarty version 3.1.27, created on 2018-12-05 01:43:25
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:20979385345c075051f3c727_94232544%%*/
+/*%%SmartyHeaderCode:19787254555c07576d93efc3_87094144%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9c4a303a5ef6c780db99f78c80b3d6b0aa70725' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl',
-      1 => 1543983058,
+      1 => 1543985004,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20979385345c075051f3c727_94232544',
+  'nocache_hash' => '19787254555c07576d93efc3_87094144',
   'variables' => 
   array (
     'arrDatosAuto' => 0,
@@ -27,16 +27,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'gasto' => 0,
     'sumGastosO' => 0,
     'arrGastosPorUsr' => 0,
+    'datosGastos' => 0,
+    'sumGastos' => 0,
+    'montoGasto' => 0,
+    'userGasto' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c07505208db68_62734258',
+  'unifunc' => 'content_5c07576d9c8a74_18573870',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c07505208db68_62734258')) {
-function content_5c07505208db68_62734258 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c07576d9c8a74_18573870')) {
+function content_5c07576d9c8a74_18573870 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '20979385345c075051f3c727_94232544';
+$_smarty_tpl->properties['nocache_hash'] = '19787254555c07576d93efc3_87094144';
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -234,9 +238,48 @@ $_smarty_tpl->tpl_vars['gasto'] = $foreach_gasto_Sav;
         <div class="col-md-4">
           <h4>Resumenes de gastos</h4>
           <?php if (isset($_smarty_tpl->tpl_vars['arrGastosPorUsr']->value)) {?>
-          <ul>
+            <?php $_smarty_tpl->tpl_vars["sumGastos"] = new Smarty_Variable("0", null, 0);?>
+            <?php
+$_from = $_smarty_tpl->tpl_vars['arrGastosPorUsr']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['datosGastos'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['datosGastos']->_loop = false;
+$_smarty_tpl->tpl_vars['userGasto'] = new Smarty_Variable;
+foreach ($_from as $_smarty_tpl->tpl_vars['userGasto']->value => $_smarty_tpl->tpl_vars['datosGastos']->value) {
+$_smarty_tpl->tpl_vars['datosGastos']->_loop = true;
+$foreach_datosGastos_Sav = $_smarty_tpl->tpl_vars['datosGastos'];
+?>
+              <?php $_smarty_tpl->tpl_vars['sumGastos'] = new Smarty_Variable(0, null, 0);?>
+            <div>
+              <ul>
+              <?php
+$_from = $_smarty_tpl->tpl_vars['datosGastos']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['montoGasto'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['montoGasto']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['montoGasto']->value) {
+$_smarty_tpl->tpl_vars['montoGasto']->_loop = true;
+$foreach_montoGasto_Sav = $_smarty_tpl->tpl_vars['montoGasto'];
+?>
+                  <?php $_smarty_tpl->tpl_vars['sumGastos'] = new Smarty_Variable($_smarty_tpl->tpl_vars['sumGastos']->value+$_smarty_tpl->tpl_vars['montoGasto']->value, null, 0);?>
+              <?php
+$_smarty_tpl->tpl_vars['montoGasto'] = $foreach_montoGasto_Sav;
+}
+?>
+                  <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['userGasto']->value;?>
+ <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['sumGastos']->value;?>
+</span></li>
+              </ul>
+            </div>
+            <?php
+$_smarty_tpl->tpl_vars['datosGastos'] = $foreach_datosGastos_Sav;
+}
+?>
 
-          </ul>
           <?php } else { ?>
           <p>Sin datos</p>
           <?php }?>

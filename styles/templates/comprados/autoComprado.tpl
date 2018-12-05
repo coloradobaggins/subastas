@@ -126,11 +126,19 @@
         <div class="col-md-4">
           <h4>Resumenes de gastos</h4>
           {if isset($arrGastosPorUsr)}
-          <ul>
-            {foreach from=$arrGastosPorUsr item=usr}
-              <li></li>
+            {assign var="sumGastos" value="0"}
+            {foreach from=$arrGastosPorUsr key=userGasto item=datosGastos}
+              {$sumGastos = 0}
+            <div>
+              <ul>
+              {foreach from=$datosGastos item=montoGasto}
+                  {$sumGastos = $sumGastos+$montoGasto}
+              {/foreach}
+                  <li class="list-group-item">{$userGasto} <span class="badge">$ {$sumGastos}</span></li>
+              </ul>
+            </div>
             {/foreach}
-          </ul>
+
           {else}
           <p>Sin datos</p>
           {/if}

@@ -41,7 +41,7 @@ if(isset($_SESSION['user'])){
 			$sumGastosO += $datosGasto["monto"];
 			$arrGastosOtros[$idGasto]["usrPago"] = $arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"];
 
-			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGasto["monto"];
+			$arrGastosPorUsr[$arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"]][] = $datosGasto["monto"];	//En cada nombre de usuario guardar el monto del gasto (index nombre de usr)
 		}
 		$template->assign("sumGastosO", $sumGastosO);
 		$template->assign("arrGastosOtros", $arrGastosOtros);
@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
 			$sumGastosInfr += $datosGasto["monto"];
 			$arrGastosInfr[$idGasto]["usrPago"] = $arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"];
 
-			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGasto["monto"];
+			$arrGastosPorUsr[$arrUsrs[$datosGasto["id_usuario_pago"]]["nombre"]][] = $datosGasto["monto"];	//En cada nombre de usuario guardar el monto del gasto (index nombre de usr)
 		}
 		$template->assign("sumGastosInfr", $sumGastosInfr);
 		$template->assign("arrGastosInfr", $arrGastosInfr);
@@ -80,15 +80,12 @@ if(isset($_SESSION['user'])){
 			$sumGastosG += $datosGastoG["monto"];
 			$arrGastoGestoria[$idGasto]["usrPago"] = $arrUsrs[$datosGastoG["id_usuario_pago"]]["nombre"];
 
-			$arrGastosPorUsr[$datosGasto["id_usuario_pago"]][] = $datosGastoG["monto"];
+			$arrGastosPorUsr[$arrUsrs[$datosGastoG["id_usuario_pago"]]["nombre"]][] = $datosGastoG["monto"];	//En cada nombre de usuario guardar el monto del gasto (index nombre de usr)
 		}
 		$template->assign("sumGastosG", $sumGastosG);
 		$template->assign("arrGastosGes", $arrGastoGestoria);
 	}
 
-	foreach($arrGastosPorUsr as $idUsr => $datos){
-		$arrGastosPorUsr[$idUsr]["nombre"] = $arrUsrs[$idUsr]["nombre"];
-	}
 
 
 	echo "********** gastos gestoria****";
