@@ -61,7 +61,13 @@ if(isset($_SESSION['user'])){
 	//Delete gastos de auto
 	//Gasto gestoria
 	if(isset($_POST['deleteGastoG'])){
-		$objGastosGestoria = new GastosGestoria();
+		extract($_POST);
+		$objGastosGestoria = new AutosGastosGestoria(0);
+		try{
+			echo $objGastosGestoria->deleteGasto($idGasto);
+		}catch(Exception $e){
+			echo $e->getMessage(). " - ". $e->getCode();
+		}
 	}
 
 	//Gastos otros

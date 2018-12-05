@@ -57,7 +57,7 @@ class AutosGastosOtros{
 
   public function getGastos($f_estado=1){
     $idAuto = $this->id_auto;
-    echo "idAuto: ".$idAuto;
+    
     $arrayResponse = array();
     $sql = "SELECT id, id_auto, id_usuario_pago, monto, observacion, pagado, fechaPago
             FROM autos_gastos_otros

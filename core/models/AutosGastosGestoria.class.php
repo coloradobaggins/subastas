@@ -86,7 +86,8 @@ class AutosGastosGestoria{
   }
 
   public function deleteGasto($idGasto){
-    $sql = "DELETE FROM autos_gastos_gestoria WHERE id = ?";
+    //$sql = "DELETE FROM autos_gastos_gestoria WHERE id = ?";
+    $sql = "UPDATE autos_gastos_gestoria SET estado = 0 WHERE id = ?";
     $stmt = $this->objConexion->mysqli->prepare($sql);
     $stmt->bind_param('i', $idGasto);
     $stmt->execute();

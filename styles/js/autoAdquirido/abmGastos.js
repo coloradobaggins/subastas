@@ -122,24 +122,29 @@ function deleteGastos(tipo, id){
 
 	var urlContr = "";
 	if(tipo=="gastoG"){
-		urlContr = "deleteGastoG=true&id="+id;
+		urlContr = "deleteGastoG=true&idGasto="+id;
 	}else if(tipo=="gastoO"){
-		urlContr = "deleteGastoO=true&id="+id;
+		urlContr = "deleteGastoO=true&idGasto="+id;
 	}else if(tipo=="gastoInfr"){
-		urlContr = "deleteGastoInfr=true&id"+id
+		urlContr = "deleteGastoInfr=true&idGasto="+id
+	}
+	if(confirm("Borrar Gasto?")){
+		$.ajax({
+			url:"?view=autoAdquirido/abmAutoAdquirido",
+			data:urlContr,
+			type:"post",
+			dataType:"text",
+			success:function(response){
+				console.log(response);
+				if(response == 1){
+					location.reload();
+				}
+			},
+			timeout:4000,
+			error:function(){
+				alert("Error de conexion, intentelo mas tarde");
+			}
+		});
 	}
 
-	$.ajax({
-		url:"?view=autoAdquirido/abmAutoAdquirido",
-		data:urlContr,
-		type:"post",
-		dataType:"text",
-		success:function(response){
-			console.log(response);
-		},
-		timeout:4000,
-		error:function(){
-			alert("Error de conexion, intentelo mas tarde");
-		}
-	});
 }

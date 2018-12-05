@@ -28,10 +28,12 @@ if(isset($_SESSION['user'])){
 	$objUsuarios = new Usuarios();
 	$arrUsrs = $objUsuarios->getUsuarios();
 	$arrayDatosAuto["nombre"] = $arrUsrs[$arrayDatosAuto["id_usuario_comprador"]]["nombre"];
-  echo "<pre>";
+
+	/*
+	echo "<pre>";
   print_r($arrayDatosAuto);
   echo "</pre>";
-
+	*/
 
 	$objGastosOtros = new AutosGastosOtros($idAuto);
 	$arrGastosOtros = $objGastosOtros->getGastos();
@@ -47,10 +49,12 @@ if(isset($_SESSION['user'])){
 		$template->assign("arrGastosOtros", $arrGastosOtros);
 	}
 
+	/*
 	echo "********** gastos otros****";
 	echo "<pre>";
   print_r($arrGastosOtros);
   echo "</pre>";
+	*/
 
 	$objGastosInfr = new AutosGastosInfr($idAuto);
 	$arrGastosInfr = $objGastosInfr->getInfracciones();
@@ -66,10 +70,11 @@ if(isset($_SESSION['user'])){
 		$template->assign("arrGastosInfr", $arrGastosInfr);
 	}
 
+		/*
 		echo "********** gastos Infr****";
 		echo "<pre>";
   	print_r($arrGastosInfr);
-  	echo "</pre>";
+  	echo "</pre>";*/
 
 
 	$objGastosGestoria = new AutosGastosGestoria($idAuto);
@@ -87,7 +92,7 @@ if(isset($_SESSION['user'])){
 	}
 
 
-
+	/*
 	echo "********** gastos gestoria****";
 	echo "<pre>";
   print_r($arrGastoGestoria);
@@ -97,7 +102,7 @@ if(isset($_SESSION['user'])){
 	echo "********** gastos x Usuario****";
 	echo "<pre>";
   print_r($arrGastosPorUsr);
-  echo "</pre>";
+  echo "</pre>";*/
 
 	$template->assign("arrGastosPorUsr", $arrGastosPorUsr);
 	$template->assign("arrUsrs", $arrUsrs);
