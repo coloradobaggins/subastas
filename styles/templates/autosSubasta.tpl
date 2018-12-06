@@ -29,7 +29,7 @@
                         <th>Vehiculo</th>
                         <th>DOM</th>
                         <th>Rad.</th>
-                        <th>+ Gestoria</th>
+                        <th>Total a invertir <span class="glyphicon glyphicon-question-sign" title="PUJA + GASTOS + DEUDAS + GESTORIA"></span></th>
                         <th>Prom. Valor calle</th>
                         <th>Posible Ganancia</th>
                         <th>Puja</th>
@@ -47,12 +47,12 @@
                           <!--<td class="danger">$ {$auto.deudaTotal}</td>-->
                           <!--<td>$ {$auto.totalAPagar}</td>-->
                           <!--<td>$ {$auto.totalAPagarMasDeuda}</td>-->
-                          <td>$ {$auto.totalAPagarMasDeuda + $auto.gastos_aprox_gestor}</td>
+                          <td>$ {$auto.totalAPagar}</td>
                           <td>
                             {if isset($auto["promedioValores"])}
                               $ {$auto["promedioValores"]}
                             {else}
-                            N/A
+                            Sin cargar
                             {/if}
                           </td>
                           <td class="info">

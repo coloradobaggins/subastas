@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-03 16:07:10
+<?php /* Smarty version 3.1.27, created on 2018-12-06 12:19:28
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:19536706155c057eded2cea0_34396941%%*/
+/*%%SmartyHeaderCode:6385478645c093e00d169d2_29112582%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '481639398c8b924965413ee462cbb23cdeeded13' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl',
-      1 => 1543864026,
+      1 => 1544109566,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19536706155c057eded2cea0_34396941',
+  'nocache_hash' => '6385478645c093e00d169d2_29112582',
   'variables' => 
   array (
     'arrayAutos' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c057edee0a862_70459018',
+  'unifunc' => 'content_5c093e00d9e434_95181338',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c057edee0a862_70459018')) {
-function content_5c057edee0a862_70459018 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c093e00d9e434_95181338')) {
+function content_5c093e00d9e434_95181338 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '19536706155c057eded2cea0_34396941';
+$_smarty_tpl->properties['nocache_hash'] = '6385478645c093e00d169d2_29112582';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -65,7 +65,7 @@ $_smarty_tpl->properties['nocache_hash'] = '19536706155c057eded2cea0_34396941';
                         <th>Vehiculo</th>
                         <th>DOM</th>
                         <th>Rad.</th>
-                        <th>+ Gestoria</th>
+                        <th>Total a invertir <span class="glyphicon glyphicon-question-sign" title="PUJA + GASTOS + DEUDAS + GESTORIA"></span></th>
                         <th>Prom. Valor calle</th>
                         <th>Posible Ganancia</th>
                         <th>Puja</th>
@@ -101,14 +101,14 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
 </td>-->
                           <!--<td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda'];?>
 </td>-->
-                          <td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor'];?>
+                          <td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagar'];?>
 </td>
                           <td>
                             <?php if (isset($_smarty_tpl->tpl_vars['auto']->value["promedioValores"])) {?>
                               $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"];?>
 
                             <?php } else { ?>
-                            N/A
+                            Sin cargar
                             <?php }?>
                           </td>
                           <td class="info">

@@ -101,9 +101,6 @@
         {/if}
       </div><!-- /.row -->
 
-      <div>
-        LISTAR OTROS GASTOS SI LOS HAY
-      </div>
     </div><!-- /.container -->
 
 
@@ -111,21 +108,24 @@
       <div class="row">
 
         <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-plus"></span></button></li>
           {if isset($arrValores)}
-
-            <ul class="list-group">
-              <li class="list-group-item active">Valores autos cargados</li>
             {foreach from=$arrValores item=valorAuto}
               <li class="list-group-item">$ {$valorAuto.valor}</li>
             {/foreach}
               <li class="list-group-item list-group-item-success">Promedio $ {$promVal}</li>
-            </ul>
+
           {else}
-          <p>No hay valores de autos cargados para este auto.</p>
+          </ul>
+
           {/if}
         </div>
 
         <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos</li>
+          </ul>
         </div>
 
       </div><!-- /.row -->

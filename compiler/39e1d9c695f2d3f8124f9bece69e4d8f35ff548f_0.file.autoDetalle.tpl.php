@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-06 11:35:09
+<?php /* Smarty version 3.1.27, created on 2018-12-06 12:24:58
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autoDetalle.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:12154409315c09339dc1d010_79410889%%*/
+/*%%SmartyHeaderCode:21104808425c093f4a9ec781_73624694%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '39e1d9c695f2d3f8124f9bece69e4d8f35ff548f' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autoDetalle.tpl',
-      1 => 1544106908,
+      1 => 1544109886,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '12154409315c09339dc1d010_79410889',
+  'nocache_hash' => '21104808425c093f4a9ec781_73624694',
   'variables' => 
   array (
     'arrDetallesAuto' => 0,
@@ -26,13 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c09339dc85845_27562605',
+  'unifunc' => 'content_5c093f4aa5b0f3_96786427',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c09339dc85845_27562605')) {
-function content_5c09339dc85845_27562605 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c093f4aa5b0f3_96786427')) {
+function content_5c093f4aa5b0f3_96786427 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '12154409315c09339dc1d010_79410889';
+$_smarty_tpl->properties['nocache_hash'] = '21104808425c093f4a9ec781_73624694';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -167,9 +167,6 @@ $_smarty_tpl->properties['nocache_hash'] = '12154409315c09339dc1d010_79410889';
         <?php }?>
       </div><!-- /.row -->
 
-      <div>
-        LISTAR OTROS GASTOS SI LOS HAY
-      </div>
     </div><!-- /.container -->
 
 
@@ -177,10 +174,9 @@ $_smarty_tpl->properties['nocache_hash'] = '12154409315c09339dc1d010_79410889';
       <div class="row">
 
         <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-plus"></span></button></li>
           <?php if (isset($_smarty_tpl->tpl_vars['arrValores']->value)) {?>
-
-            <ul class="list-group">
-              <li class="list-group-item active">Valores autos cargados</li>
             <?php
 $_from = $_smarty_tpl->tpl_vars['arrValores']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -200,13 +196,17 @@ $_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
 ?>
               <li class="list-group-item list-group-item-success">Promedio $ <?php echo $_smarty_tpl->tpl_vars['promVal']->value;?>
 </li>
-            </ul>
+
           <?php } else { ?>
-          <p>No hay valores de autos cargados para este auto.</p>
+          </ul>
+
           <?php }?>
         </div>
 
         <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos</li>
+          </ul>
         </div>
 
       </div><!-- /.row -->

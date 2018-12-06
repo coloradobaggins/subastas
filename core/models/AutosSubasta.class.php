@@ -122,7 +122,7 @@ class AutosSubasta
     //No se tiene en cuenta el gasto del gestor
     public function calcularGastosTotales($puja, $ivaIncluido, $d_patente, $d_caba, $d_bsas, $gastosAdmConIva, $comision_valor, $otrosGastos, $g_gestoria){
 
-      echo "puja: ".$puja. " - ivaIncluido: ". $ivaIncluido." - d pat: ". $d_patente." - d caba: ". $d_caba." - d bsas: ". $d_bsas." - gastosADMconIVa: ". $gastosAdmConIva." - comision: ". $comision_valor." - otrosGastos: ". $otrosGastos." - g gestoria: ".$g_gestoria." <br />";
+      //echo "puja: ".$puja. " - ivaIncluido: ". $ivaIncluido." - d pat: ". $d_patente." - d caba: ". $d_caba." - d bsas: ". $d_bsas." - gastosADMconIVa: ". $gastosAdmConIva." - comision: ". $comision_valor." - otrosGastos: ". $otrosGastos." - g gestoria: ".$g_gestoria." <br />";
 
 
 

@@ -67,11 +67,11 @@ if(isset($_SESSION['user'])){
     $arrayAutos[$idAuto]["usuario"] = $arrayUsuarios[$datosAutos["id_usuario"]]["nombre"];
     $arrayAutos[$idAuto]["combustible"] = $arrCombus[$datosAutos["id_combustible"]]["nombre"];
 
-    $arrayGastosTotales = $objAutosSubasta->calcularGastosTotales($datosAutos["valor_puja"], $datosAutos["iva_incluido"], $datosAutos["deuda_patente"], $datosAutos["deuda_infr_caba"], $datosAutos["deuda_infr_bsas"], $totalMontoGastoAdm, $datosAutos["comision_valor"], $sumOtrosGastos);
+    $arrayGastosTotales = $objAutosSubasta->calcularGastosTotales($datosAutos["valor_puja"], $datosAutos["iva_incluido"], $datosAutos["deuda_patente"], $datosAutos["deuda_infr_caba"], $datosAutos["deuda_infr_bsas"], $totalMontoGastoAdm, $datosAutos["comision_valor"], $sumOtrosGastos, $datosAutos["gastos_aprox_gestor"]);
 
     $arrayAutos[$idAuto]["deudaTotal"] = $arrayGastosTotales["deudaTotal"];
     $arrayAutos[$idAuto]["totalAPagar"] = $arrayGastosTotales["totalAPagar"];
-    $arrayAutos[$idAuto]["totalAPagarMasDeuda"] = $arrayGastosTotales["totalAPagar"] + $arrayGastosTotales["deudaTotal"];
+    //$arrayAutos[$idAuto]["totalAPagarMasDeuda"] = $arrayGastosTotales["totalAPagar"] + $arrayGastosTotales["deudaTotal"];
 
 
     $objValorCalle = new ValorCalle($idAuto);
@@ -95,8 +95,8 @@ if(isset($_SESSION['user'])){
 /*
   echo "<pre>";
   print_r($arrayAutos);
-  echo "</pre>";*/
-
+  echo "</pre>";
+*/
 
 
 /*
