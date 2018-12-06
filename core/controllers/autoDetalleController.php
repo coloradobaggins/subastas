@@ -5,7 +5,8 @@ include("core/models/AutosSubasta.class.php");
 include("core/models/GastosAdm.class.php");
 include("core/models/Usuarios.class.php");
 include("core/models/ValorCalle.class.php");
-include("core/models/OtrosGastos.class.php");
+//include("core/models/OtrosGastos.class.php");
+include("core/models/SubastaGastosOtros.class.php");
 include("core/models/Utils.class.php");
 
 if(isset($_SESSION['user'])){
@@ -36,7 +37,7 @@ if(isset($_SESSION['user'])){
 	echo "</pre>";
 
 	//Otros gastos subastas autos
-	$objOtrosGastosSubastas = new OtrosGastos();
+	$objOtrosGastosSubastas = new SubastaGastosOtros();
 	$arrayOtrosGastosSubastas = $objOtrosGastosSubastas-> getOtrosGastosSubasta($idAuto);
 	$sumOtrosGastos = 0;
 	if(count($arrayOtrosGastosSubastas)>0){
@@ -57,13 +58,15 @@ echo "<pre>";
 print_r($arrGastosAdm);
 echo "</pre>";
 
-$arrGastosTotales = $objAutosSubasta->calcularGastosTotales($arrDetallesAuto["valor_puja"], $arrDetallesAuto["iva_incluido"], $arrDetallesAuto["deuda_patente"], $arrDetallesAuto["deuda_infr_caba"], $arrDetallesAuto["deuda_infr_bsas"], $totalMontoGastoAdm, $arrDetallesAuto["comision_valor"], $sumOtrosGastos);
+$arrGastosTotales = $objAutosSubasta->calcularGastosTotales($arrDetallesAuto["valor_puja"], $arrDetallesAuto["iva_incluido"], $arrDetallesAuto["deuda_patente"], $arrDetallesAuto["deuda_infr_caba"], $arrDetallesAuto["deuda_infr_bsas"], $totalMontoGastoAdm, $arrDetallesAuto["comision_valor"], $sumOtrosGastos, $arrDetallesAuto["gastos_aprox_gestor"]);
 
 echo "gastosTotalees>";
 echo "<pre>";
 print_r($arrGastosTotales);
 echo "</pre>";
 
+
+//Valores de autos parecidos
 $objValorCalle = new ValorCalle($idAuto);
 $arrValores = $objValorCalle->promedioValorYvalores();
 
@@ -78,13 +81,14 @@ foreach($arrValores as $idValor => $datosV){
 	$contVal++;
 }
 if($contVal != 0){
-	$promVal = $sumVal / $contVal;	
+	$promVal = $sumVal / $contVal;
 }
 
 
 	if(!empty($arrDetallesAuto)){$template->assign("arrDetallesAuto", $arrDetallesAuto);}
 	if(!empty($arrValores)){$template->assign("arrValores", $arrValores); $template->assign("promVal", $promVal);}
-
+	if(!empty($arrGastosAdm)){$template->assign("arrGastosAdm", $arrGastosAdm);}
+	if(!empty($arrGastosTotales)){$template->assign("arrGastosTotales", $arrGastosTotales);}
   $template->display('autoDetalle.tpl');
 }else{
 	echo "Sesion caduco";

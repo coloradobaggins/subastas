@@ -15,25 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="alert alert-success">
-            {if isset($arrDetallesAuto)}
-            <div class="row">
-              <div class="col-md-6">
-                
-                    {if $arrDetallesAuto.comprado==0}
-                      <button id="{$arrDetallesAuto.id}" data-toggle="modal" data-target="#modalAddPuja" class="btn btn-success btn-xs addPuja" title="Actualizar"><span class="glyphicon glyphicon-check"></span></button>
-                    {/if}
-                <h4>Puja Actual:</h4>
-                <p>$ {$arrDetallesAuto.valor_puja}</p>
-                
-              </div>
-              <div class="col-md-6">
-                <h4>Fecha de Cierre</h4>
-                <p>{$arrDetallesAuto.fecha_cierre} - {{$arrDetallesAuto.hora_cierre}}</p>
-              </div>
-            </div>
-            {/if}
-          </div>
+
         </div>
       </div>
     </div> <!-- /container -->
@@ -49,8 +31,33 @@
               <li>Radcado: {$arrDetallesAuto.radicacion}</li>
             </ul>
           </div>
-        </div><!-- /.row -->
-      </div><!-- /.container -->
+        </div><!-- /.col -->
+        <div class="col-md-5">
+          <div class="alert alert-success">
+            {if isset($arrDetallesAuto)}
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Puja Actual: {if $arrDetallesAuto.comprado==0}<button id="{$arrDetallesAuto.id}" data-toggle="modal" data-target="#modalAddPuja" class="btn btn-success btn-xs addPuja pull-right" title="Actualizar"><span class="glyphicon glyphicon-check"></span></button>{/if}</h4>
+                <p>$ {$arrDetallesAuto.valor_puja}</p>
+
+              </div>
+              <div class="col-md-6">
+                <p>Fecha de Cierre</h4>
+                <p>{$arrDetallesAuto.fecha_cierre} - {$arrDetallesAuto.hora_cierre}</p>
+              </div>
+            </div>
+            {/if}
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="alert alert-warning">
+            <h4>Total a Pagar:</h4>
+            <p>$ {$arrGastosTotales.totalAPagar}</p>
+          </div>
+        </div>
+      </div><!-- /.row -->
+
 
       <div class="row">
         <div class="col-md-12">
@@ -74,8 +81,10 @@
                 <li class="list-group-item">Debe. BSAS: <span class="badge">$ {$arrDetallesAuto.deuda_infr_bsas}</span></li>
                 <li class="list-group-item list-group-item-warning">Comision: {$auto.comision}% <span class="badge">$ {$arrDetallesAuto.comision_valor}</span></li>
 
+                <li class="list-group-item list-group-item-warning">Gastos adm + IVA: <span class="badge">{if isset($arrGastosAdm)} $ {$arrGastosAdm.monto + $arrGastosAdm.montoIva} {else} N/A{/if}</span></li>
+
                 <li class="list-group-item">IVA Incluido en valor final: <span class="badge">{$arrDetallesAuto.iva_incluido}</span></li>
-                <li class="list-group-item list-group-item-danger">Gastos Aprox Gestoria: <span class="badge">$ {$arrDetallesAuto.gastos_aprox_gestor}</span></li>
+                <li class="list-group-item list-group-item-warning">Gastos Aprox Gestoria: <span class="badge">$ {$arrDetallesAuto.gastos_aprox_gestor}</span></li>
               </ul>
 
         </div><!-- /.col -->
@@ -91,6 +100,10 @@
         </div>
         {/if}
       </div><!-- /.row -->
+
+      <div>
+        LISTAR OTROS GASTOS SI LOS HAY
+      </div>
     </div><!-- /.container -->
 
 
