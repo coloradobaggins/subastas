@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-07 02:26:23
+<?php /* Smarty version 3.1.27, created on 2018-12-07 10:56:40
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:7709460145c0a047f64b2a1_95616048%%*/
+/*%%SmartyHeaderCode:9967292835c0a7c18d36cb0_88650132%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9c4a303a5ef6c780db99f78c80b3d6b0aa70725' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl',
-      1 => 1544160379,
+      1 => 1544190995,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7709460145c0a047f64b2a1_95616048',
+  'nocache_hash' => '9967292835c0a7c18d36cb0_88650132',
   'variables' => 
   array (
     'arrDatosAuto' => 0,
@@ -38,13 +38,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0a047f6da290_38175528',
+  'unifunc' => 'content_5c0a7c18db2856_55676760',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0a047f6da290_38175528')) {
-function content_5c0a047f6da290_38175528 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0a7c18db2856_55676760')) {
+function content_5c0a7c18db2856_55676760 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '7709460145c0a047f64b2a1_95616048';
+$_smarty_tpl->properties['nocache_hash'] = '9967292835c0a7c18d36cb0_88650132';
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -126,7 +126,7 @@ $_smarty_tpl->properties['nocache_hash'] = '7709460145c0a047f64b2a1_95616048';
         <div class="col-md-12">
 
           <ul class="list-group">
-            <li class="list-group-item active">Valores autos cargados <button id="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
+            <li class="list-group-item active">Valores autos cargados <button id="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id_subasta'];?>
 " class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
           <?php if (isset($_smarty_tpl->tpl_vars['arrValoresCalle']->value)) {?>
             <?php

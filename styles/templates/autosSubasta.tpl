@@ -30,7 +30,7 @@
                         <th>DOM</th>
                         <th>Rad.</th>
                         <th>Total a invertir <span class="glyphicon glyphicon-question-sign" title="PUJA + GASTOS + DEUDAS + GESTORIA"></span></th>
-                        <th>Prom. Valor calle</th>
+                        <th>Caucion</th>
                         <th>Posible Ganancia</th>
                         <th>Puja</th>
                         <th></th>
@@ -49,11 +49,7 @@
                           <!--<td>$ {$auto.totalAPagarMasDeuda}</td>-->
                           <td>$ {$auto.totalAPagar}</td>
                           <td>
-                            {if isset($auto["promedioValores"])}
-                              $ {$auto["promedioValores"]}
-                            {else}
-                            Sin cargar
-                            {/if}
+                            $ 5000
                           </td>
                           <td class="info">
                             $ {$auto["promedioValores"] - ($auto.totalAPagarMasDeuda+$auto.gastos_aprox_gestor)}
@@ -84,6 +80,15 @@
 
                                   <div class="row">
                                     <div class="col-md-4">
+                                      <div class="bs-callout bs-callout-danger">
+                                        <ul>
+                                          <li>A&ntilde;o: {$auto.ano}</li>
+                                          <li>Combustible: {$auto.combustible}</li>
+                                          <li>Kms: {$auto.kms}</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
 
                                       <div class="bs-callout bs-callout-warning">
                                         <p>Total + deuda + gestoria + otros Gastos</p>
@@ -96,15 +101,7 @@
                                         <h4><b>{$auto.fecha_cierre} {$auto.hora_cierre}</b></h4>
                                       </div>
                                     </div>
-                                    <div class="col-md-4">
-                                      <div class="bs-callout bs-callout-danger">
-                                        <ul>
-                                          <li>A&ntilde;o: {$auto.ano}</li>
-                                          <li>Combustible: {$auto.combustible}</li>
-                                          <li>Kms: {$auto.kms}</li>
-                                        </ul>
-                                      </div>
-                                    </div>
+
 
                                   </div><!-- /.row -->
 
@@ -165,7 +162,16 @@
 
                                           </div>
 
-                                          <div class="col-md-6">
+                                          <div class="col-md-2">
+                                            <h4>Promedio valores cargados</h4>
+                                            {if isset($auto["promedioValores"])}
+                                              $ {$auto["promedioValores"]}
+                                            {else}
+                                            Sin cargar
+                                            {/if}
+                                          </div>
+
+                                          <div class="col-md-4">
                                             <p>Calcular otras Ganancias</p>
 
                                             <p>Costo Total: <b>$ <span class="valorTotalAuto">{$auto.totalAPagarMasDeuda + $auto.gastos_aprox_gestor}</span></b></p>

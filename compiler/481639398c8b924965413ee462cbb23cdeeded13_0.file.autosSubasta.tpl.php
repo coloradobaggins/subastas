@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-06 22:53:22
+<?php /* Smarty version 3.1.27, created on 2018-12-07 10:29:55
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:8174559675c09d2921b53c8_27565398%%*/
+/*%%SmartyHeaderCode:16975693715c0a75d39f9a73_18907106%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '481639398c8b924965413ee462cbb23cdeeded13' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl',
-      1 => 1544145324,
+      1 => 1544189394,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8174559675c09d2921b53c8_27565398',
+  'nocache_hash' => '16975693715c0a75d39f9a73_18907106',
   'variables' => 
   array (
     'arrayAutos' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c09d29223f221_73301069',
+  'unifunc' => 'content_5c0a75d3a79387_58024800',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c09d29223f221_73301069')) {
-function content_5c09d29223f221_73301069 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0a75d3a79387_58024800')) {
+function content_5c0a75d3a79387_58024800 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '8174559675c09d2921b53c8_27565398';
+$_smarty_tpl->properties['nocache_hash'] = '16975693715c0a75d39f9a73_18907106';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,7 +66,7 @@ $_smarty_tpl->properties['nocache_hash'] = '8174559675c09d2921b53c8_27565398';
                         <th>DOM</th>
                         <th>Rad.</th>
                         <th>Total a invertir <span class="glyphicon glyphicon-question-sign" title="PUJA + GASTOS + DEUDAS + GESTORIA"></span></th>
-                        <th>Prom. Valor calle</th>
+                        <th>Caucion</th>
                         <th>Posible Ganancia</th>
                         <th>Puja</th>
                         <th></th>
@@ -104,12 +104,7 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                           <td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagar'];?>
 </td>
                           <td>
-                            <?php if (isset($_smarty_tpl->tpl_vars['auto']->value["promedioValores"])) {?>
-                              $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"];?>
-
-                            <?php } else { ?>
-                            Sin cargar
-                            <?php }?>
+                            $ 5000
                           </td>
                           <td class="info">
                             $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"]-($_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor']);?>
@@ -144,6 +139,18 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
 
                                   <div class="row">
                                     <div class="col-md-4">
+                                      <div class="bs-callout bs-callout-danger">
+                                        <ul>
+                                          <li>A&ntilde;o: <?php echo $_smarty_tpl->tpl_vars['auto']->value['ano'];?>
+</li>
+                                          <li>Combustible: <?php echo $_smarty_tpl->tpl_vars['auto']->value['combustible'];?>
+</li>
+                                          <li>Kms: <?php echo $_smarty_tpl->tpl_vars['auto']->value['kms'];?>
+</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
 
                                       <div class="bs-callout bs-callout-warning">
                                         <p>Total + deuda + gestoria + otros Gastos</p>
@@ -159,18 +166,7 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
 </b></h4>
                                       </div>
                                     </div>
-                                    <div class="col-md-4">
-                                      <div class="bs-callout bs-callout-danger">
-                                        <ul>
-                                          <li>A&ntilde;o: <?php echo $_smarty_tpl->tpl_vars['auto']->value['ano'];?>
-</li>
-                                          <li>Combustible: <?php echo $_smarty_tpl->tpl_vars['auto']->value['combustible'];?>
-</li>
-                                          <li>Kms: <?php echo $_smarty_tpl->tpl_vars['auto']->value['kms'];?>
-</li>
-                                        </ul>
-                                      </div>
-                                    </div>
+
 
                                   </div><!-- /.row -->
 
@@ -255,7 +251,17 @@ $_smarty_tpl->tpl_vars['valorCalle'] = $foreach_valorCalle_Sav;
 
                                           </div>
 
-                                          <div class="col-md-6">
+                                          <div class="col-md-2">
+                                            <h4>Promedio valores cargados</h4>
+                                            <?php if (isset($_smarty_tpl->tpl_vars['auto']->value["promedioValores"])) {?>
+                                              $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"];?>
+
+                                            <?php } else { ?>
+                                            Sin cargar
+                                            <?php }?>
+                                          </div>
+
+                                          <div class="col-md-4">
                                             <p>Calcular otras Ganancias</p>
 
                                             <p>Costo Total: <b>$ <span class="valorTotalAuto"><?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor'];?>

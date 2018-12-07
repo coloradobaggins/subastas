@@ -64,7 +64,7 @@
         <div class="col-md-12">
 
           <ul class="list-group">
-            <li class="list-group-item active">Valores autos cargados <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
+            <li class="list-group-item active">Valores autos cargados <button id="{$arrDatosAuto.id_subasta}" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
           {if isset($arrValoresCalle)}
             {foreach from=$arrValoresCalle item=valorAuto}
               <li class="list-group-item">{$valorAuto.url} <button id="{$valorAuto.id}" class="btn btn-xs btn-danger pull-right deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">$ {$valorAuto.valor}</span></li>
