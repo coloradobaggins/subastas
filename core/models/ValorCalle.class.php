@@ -31,19 +31,20 @@ class ValorCalle
 
     $estadoType = (is_string($f_estado)) ? 's' : 'i';
 
-    $sql = "SELECT id, id_auto, valor
+    $sql = "SELECT id, id_auto, valor, url
             FROM subastas_valor_calle
             WHERE id_auto = ?
             AND estado = ?";
     $stmt = $this->objConexion->mysqli->prepare($sql);
     $stmt->bind_param('i'.$estadoType, $idAuto, $f_estado);
     $stmt->execute();
-    $stmt->bind_result($id, $id_auto, $valor);
+    $stmt->bind_result($id, $id_auto, $valor, $url);
     if(!$stmt->errno){
       while($stmt->fetch()){
         $arrayResponse[$id] = array(
           "id"    => $id,
-          "valor" => $valor
+          "valor" => $valor,
+          "url"   => $url
         );
       }/*
       if(!empty($arrayResponse)){

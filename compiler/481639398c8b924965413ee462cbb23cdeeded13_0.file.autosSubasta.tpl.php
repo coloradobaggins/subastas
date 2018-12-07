@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-06 12:19:28
+<?php /* Smarty version 3.1.27, created on 2018-12-06 22:53:22
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:6385478645c093e00d169d2_29112582%%*/
+/*%%SmartyHeaderCode:8174559675c09d2921b53c8_27565398%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '481639398c8b924965413ee462cbb23cdeeded13' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl',
-      1 => 1544109566,
+      1 => 1544145324,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6385478645c093e00d169d2_29112582',
+  'nocache_hash' => '8174559675c09d2921b53c8_27565398',
   'variables' => 
   array (
     'arrayAutos' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c093e00d9e434_95181338',
+  'unifunc' => 'content_5c09d29223f221_73301069',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c093e00d9e434_95181338')) {
-function content_5c093e00d9e434_95181338 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c09d29223f221_73301069')) {
+function content_5c09d29223f221_73301069 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '6385478645c093e00d169d2_29112582';
+$_smarty_tpl->properties['nocache_hash'] = '8174559675c09d2921b53c8_27565398';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -298,9 +298,6 @@ $_smarty_tpl->tpl_vars['auto'] = $foreach_auto_Sav;
     </div><!-- /.container -->
 
     <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddPuja.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
-?>
-
-    <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddValorCalle.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
     <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalComprar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);

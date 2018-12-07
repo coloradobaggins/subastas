@@ -21,8 +21,9 @@ class SubastaGastosOtros
         $this->objConexion = Conexion::getInstance();
     }
 
-    //Otros Gastos autos en subasta, no comprado
-    public function getOtrosGastosSubasta($idAuto, $f_estado=1){
+    //Otros Gastos autos en subasta, no comprado - agrupado por autos
+    //$group= Pasar 0 para listados de autos, 0 para un auto en detalle
+    public function getOtrosGastosSubasta($idAuto, $group=0, $f_estado=1){
       $arrayResponse = array();
 
       $f_estadoType = (is_string($f_estado)) ? 's' : 'i';
@@ -37,12 +38,22 @@ class SubastaGastosOtros
       $stmt->bind_result($id, $idAutoSubasta, $observacion, $monto);
       if(!$stmt->errno){
         while($stmt->fetch()){
-          $arrayResponse[$idAutoSubasta][$id] = array(
-            "id"            => $id,
-            "idAutoSubasta" => $idAutoSubasta,
-            "observacion"   => $observacion,
-            "monto"         => $monto
-          );
+          if($group==0){
+            $arrayResponse[$idAutoSubasta][$id] = array(
+              "id"            => $id,
+              "idAutoSubasta" => $idAutoSubasta,
+              "observacion"   => $observacion,
+              "monto"         => $monto
+            );
+          }else if($group==1){
+            $arrayResponse[$id] = array(
+              "id"            => $id,
+              "idAutoSubasta" => $idAutoSubasta,
+              "observacion"   => $observacion,
+              "monto"         => $monto
+            );
+          }
+
         }
       }else{
         throw new Exception("Error al traer otros gastos subasta, ".$stmt->error, $stmt->errno);

@@ -38,13 +38,17 @@ if(isset($_SESSION['user'])){
 
 	//Otros gastos subastas autos
 	$objOtrosGastosSubastas = new SubastaGastosOtros();
-	$arrayOtrosGastosSubastas = $objOtrosGastosSubastas-> getOtrosGastosSubasta($idAuto);
+	$arrayOtrosGastosSubastas = $objOtrosGastosSubastas-> getOtrosGastosSubasta($idAuto, 1, 1);
 	$sumOtrosGastos = 0;
 	if(count($arrayOtrosGastosSubastas)>0){
-		foreach($arrayOtrosGastosSubastas[$idAuto] as $idGastos => $datosGasto){
+		foreach($arrayOtrosGastosSubastas as $idGastos => $datosGasto){
 				$sumOtrosGastos += $datosGasto["monto"];
 		}
 	}
+	echo "gastos otros!!";
+	echo "<pre>";
+	print_r($arrayOtrosGastosSubastas);
+	echo "</pre>";
 
 $objGastosAdm = new GastosAdm();
 $arrGastosAdm = $objGastosAdm->getMonto($arrDetallesAuto["valor_puja"]);
@@ -89,6 +93,7 @@ if($contVal != 0){
 	if(!empty($arrValores)){$template->assign("arrValores", $arrValores); $template->assign("promVal", $promVal);}
 	if(!empty($arrGastosAdm)){$template->assign("arrGastosAdm", $arrGastosAdm);}
 	if(!empty($arrGastosTotales)){$template->assign("arrGastosTotales", $arrGastosTotales);}
+	if(!empty($arrayOtrosGastosSubastas)){$template->assign("arrayOtrosGastosSubastas", $arrayOtrosGastosSubastas);}
   $template->display('autoDetalle.tpl');
 }else{
 	echo "Sesion caduco";

@@ -85,7 +85,9 @@ $("#btnSendValorAuto").click(function(){
           dataType:'text',
           success:function(response){
               console.log(response);
-              //location.reload();
+              if(response==1){
+                location.reload();
+              }
           },
           timeout:4000,
           error:function(){

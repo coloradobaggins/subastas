@@ -5,13 +5,13 @@
  * Date: 26/9/18
  * Time: 10:21
  */
-include("core/models/Autos.class.php");
+include("core/models/AutosSubasta.class.php");
 
 if(isset($_SESSION['user'])){
 
   if(isset($_POST['updatePuja'])){
     extract($_POST);
-    $objAutos = new Autos();
+    $objAutos = new AutosSubasta();
     echo $objAutos->addPuja($idAuto, $valorPuja);
   }
 

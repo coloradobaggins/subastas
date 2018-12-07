@@ -47,7 +47,7 @@
             <ul>
               <li class="list-group-item">Monto: $ {$arrDatosAuto.monto}</li>
               <li class="list-group-item">Comprador: {$arrDatosAuto.nombre}</li>
-              <li class="list-group-item">Fecha Compra: {$arrDatosAuto.combustible}</li>
+              <li class="list-group-item">Fecha Compra: {$arrDatosAuto.fecha_compra}</li>
             </ul>
           </div>
         {else}
@@ -59,6 +59,25 @@
         {/if}
 
       </div><!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
+          {if isset($arrValoresCalle)}
+            {foreach from=$arrValoresCalle item=valorAuto}
+              <li class="list-group-item">{$valorAuto.url} <button id="{$valorAuto.id}" class="btn btn-xs btn-danger pull-right deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">$ {$valorAuto.valor}</span></li>
+            {/foreach}
+              <li class="list-group-item list-group-item-success">Promedio <span class="badge">$ {$promVal}</span></li>
+
+          {else}
+            <li class="list-group-item list-group-item-warning">Sin cargar</li>
+          </ul>
+
+          {/if}
+        </div>
+      </div>
     </div><!-- /.container -->
 
 
@@ -149,6 +168,7 @@
     {include 'comprados/modalAddInfr.tpl'}
     {include 'comprados/modalAddGastoGestoria.tpl'}
     {include 'comprados/modalAddGastosOtros.tpl'}
+    {include 'verAutos/modalAddValorCalle.tpl'}
 
 
     {include 'overall/footer.tpl'}

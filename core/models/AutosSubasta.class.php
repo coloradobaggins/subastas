@@ -314,6 +314,10 @@ class AutosSubasta
       $arr = $arrAutoSubasta['arranca'];
       $obs = $arrAutoSubasta['observacion'];
       $g_gest = $arrAutoSubasta['gastos_aprox_gestor'];
+      //deuda_patente, deuda_infr_caba, deuda_infr_bsas
+      $d_pat = $arrAutoSubasta["deuda_patente"];
+      $d_infr_caba = $arrAutoSubasta["deuda_infr_caba"];
+      $d_infr_bsas = $arrAutoSubasta["deuda_infr_bsas"];
       $u_carga = $_SESSION['id'];
       $f_carga = date('Y-m-d');
       $h_carga = date('H:i:s');

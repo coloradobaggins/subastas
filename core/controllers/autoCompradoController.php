@@ -5,6 +5,7 @@ if(isset($_SESSION['user'])){
 	include('core/models/AutosGastosOtros.class.php');
 	include('core/models/AutosGastosGestoria.class.php');
 	include('core/models/AutosGastosInfr.class.php');
+	include("core/models/ValorCalle.class.php");
 	include('core/models/Utils.class.php');
 	include('core/models/Usuarios.class.php');
   $template = new Smarty();
@@ -29,11 +30,26 @@ if(isset($_SESSION['user'])){
 	$arrUsrs = $objUsuarios->getUsuarios();
 	$arrayDatosAuto["nombre"] = $arrUsrs[$arrayDatosAuto["id_usuario_comprador"]]["nombre"];
 
-	/*
+
+
 	echo "<pre>";
   print_r($arrayDatosAuto);
   echo "</pre>";
-	*/
+
+	//Traer los valores cargados para el auto cuando estaba en subasta (para no volver a cargarlos)
+	$objValorCalle = new ValorCalle($arrayDatosAuto["id_subasta"]);
+	$arrValoresCalle = $objValorCalle->promedioValorYvalores();
+	$sumVal =  0;
+	$contVal = 0;
+	foreach($arrValoresCalle as $idValor => $datosV){
+		$sumVal+= $datosV["valor"];
+		$contVal++;
+	}
+	if($contVal != 0){
+		$promVal = $sumVal / $contVal;
+	}
+
+
 
 	$objGastosOtros = new AutosGastosOtros($idAuto);
 	$arrGastosOtros = $objGastosOtros->getGastos();
@@ -107,6 +123,7 @@ if(isset($_SESSION['user'])){
 	$template->assign("arrGastosPorUsr", $arrGastosPorUsr);
 	$template->assign("arrUsrs", $arrUsrs);
 	$template->assign("arrDatosAuto", $arrayDatosAuto);
+	if(!empty($arrValoresCalle)){$template->assign("arrValoresCalle", $arrValoresCalle); $template->assign("promVal", $promVal);}
 
   $template->display('comprados/autoComprado.tpl');
 

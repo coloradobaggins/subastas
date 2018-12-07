@@ -204,7 +204,6 @@
     </div><!-- /.container -->
 
     {include 'verAutos/modalAddPuja.tpl'}
-    {include 'verAutos/modalAddValorCalle.tpl'}
     {include 'verAutos/modalComprar.tpl'}
     {include 'verAutos/modalAddAutoSubasta.tpl'}
 

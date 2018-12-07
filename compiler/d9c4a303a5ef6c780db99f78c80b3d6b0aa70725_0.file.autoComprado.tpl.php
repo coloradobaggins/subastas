@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-05 01:54:23
+<?php /* Smarty version 3.1.27, created on 2018-12-07 02:26:23
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:17615500775c0759ff9378f2_83531607%%*/
+/*%%SmartyHeaderCode:7709460145c0a047f64b2a1_95616048%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,14 +9,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9c4a303a5ef6c780db99f78c80b3d6b0aa70725' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/comprados/autoComprado.tpl',
-      1 => 1543985051,
+      1 => 1544160379,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '17615500775c0759ff9378f2_83531607',
+  'nocache_hash' => '7709460145c0a047f64b2a1_95616048',
   'variables' => 
   array (
     'arrDatosAuto' => 0,
+    'arrDetallesAuto' => 0,
+    'arrValoresCalle' => 0,
+    'valorAuto' => 0,
+    'promVal' => 0,
     'arrGastosGes' => 0,
     'g_gestoria' => 0,
     'sumGastosG' => 0,
@@ -34,13 +38,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0759ff99ad23_76826127',
+  'unifunc' => 'content_5c0a047f6da290_38175528',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0759ff99ad23_76826127')) {
-function content_5c0759ff99ad23_76826127 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0a047f6da290_38175528')) {
+function content_5c0a047f6da290_38175528 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '17615500775c0759ff9378f2_83531607';
+$_smarty_tpl->properties['nocache_hash'] = '7709460145c0a047f64b2a1_95616048';
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -104,7 +108,7 @@ $_smarty_tpl->properties['nocache_hash'] = '17615500775c0759ff9378f2_83531607';
 </li>
               <li class="list-group-item">Comprador: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['nombre'];?>
 </li>
-              <li class="list-group-item">Fecha Compra: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['combustible'];?>
+              <li class="list-group-item">Fecha Compra: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['fecha_compra'];?>
 </li>
             </ul>
           </div>
@@ -117,6 +121,43 @@ $_smarty_tpl->properties['nocache_hash'] = '17615500775c0759ff9378f2_83531607';
         <?php }?>
 
       </div><!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button id="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
+" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
+          <?php if (isset($_smarty_tpl->tpl_vars['arrValoresCalle']->value)) {?>
+            <?php
+$_from = $_smarty_tpl->tpl_vars['arrValoresCalle']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['valorAuto'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['valorAuto']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['valorAuto']->value) {
+$_smarty_tpl->tpl_vars['valorAuto']->_loop = true;
+$foreach_valorAuto_Sav = $_smarty_tpl->tpl_vars['valorAuto'];
+?>
+              <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['url'];?>
+ <button id="<?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['id'];?>
+" class="btn btn-xs btn-danger pull-right deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['valor'];?>
+</span></li>
+            <?php
+$_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
+}
+?>
+              <li class="list-group-item list-group-item-success">Promedio <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['promVal']->value;?>
+</span></li>
+
+          <?php } else { ?>
+            <li class="list-group-item list-group-item-warning">Sin cargar</li>
+          </ul>
+
+          <?php }?>
+        </div>
+      </div>
     </div><!-- /.container -->
 
 
@@ -294,6 +335,9 @@ $_smarty_tpl->tpl_vars['datosGastos'] = $foreach_datosGastos_Sav;
 ?>
 
     <?php echo $_smarty_tpl->getSubTemplate ('comprados/modalAddGastosOtros.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
+    <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddValorCalle.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
 

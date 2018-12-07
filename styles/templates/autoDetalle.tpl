@@ -71,6 +71,38 @@
 
     <div class="container">
       <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item active">Otros datos:</li>
+            <li class="list-group-item">Observaciones: {$arrDetallesAuto.observacion}</li>
+            <li class="list-group-item">Observaciones Visitas: {$arrDetallesAuto.visita_observaciones}</li>
+            <li class="list-group-item">Puntaje Visita {$arrDetallesAuto.visita_puntaje}</li>
+            <li class="list-group-item">Url sitio {$arrDetallesAuto.url_narvaez}</li>
+            <li class="list-group-item">Cargado por: {$arrDetallesAuto.usuario}</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
+          {if isset($arrValores)}
+            {foreach from=$arrValores item=valorAuto}
+              <li class="list-group-item">{$valorAuto.url} <button id="{$valorAuto.id}" class="btn btn-xs btn-danger pull-right deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">$ {$valorAuto.valor}</span></li>
+            {/foreach}
+              <li class="list-group-item list-group-item-success">Promedio <span class="badge">$ {$promVal}</span></li>
+
+          {else}
+            <li class="list-group-item list-group-item-warning">Sin cargar</li>
+          </ul>
+
+          {/if}
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
         {if isset($arrDetallesAuto)}
         <div class="col-md-4">
 
@@ -88,17 +120,18 @@
               </ul>
 
         </div><!-- /.col -->
-        <div class="col-md-6">
-          <ul>
-            <li class="list-group-item active">Otros datos:</li>
-            <li class="list-group-item">Observaciones: {$arrDetallesAuto.observacion}</li>
-            <li class="list-group-item">Observaciones Visitas: {$arrDetallesAuto.visita_observaciones}</li>
-            <li class="list-group-item">Puntaje Visita {$arrDetallesAuto.visita_puntaje}</li>
-            <li class="list-group-item">Url sitio {$arrDetallesAuto.url_narvaez}</li>
-            <li class="list-group-item">Cargado por: {$arrDetallesAuto.usuario}</li>
+        {/if}
+
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos</li>
+            {if isset($arrayOtrosGastosSubastas)}
+              {foreach from=$arrayOtrosGastosSubastas item=gastoO}
+                <li class="list-group-item">{$gastoO.observacion} <span class="badge">{$gastoO.monto}</span></li>
+              {/foreach}
+            {/if}
           </ul>
         </div>
-        {/if}
       </div><!-- /.row -->
 
     </div><!-- /.container -->
@@ -107,29 +140,11 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item active">Valores autos cargados <button class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-plus"></span></button></li>
-          {if isset($arrValores)}
-            {foreach from=$arrValores item=valorAuto}
-              <li class="list-group-item">$ {$valorAuto.valor}</li>
-            {/foreach}
-              <li class="list-group-item list-group-item-success">Promedio $ {$promVal}</li>
-
-          {else}
-          </ul>
-
-          {/if}
-        </div>
-
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item active">Otros gastos</li>
-          </ul>
-        </div>
 
       </div><!-- /.row -->
     </div>
+    {include 'verAutos/modalAddPuja.tpl'}
+    {include 'verAutos/modalAddValorCalle.tpl'}
 
 
     {include 'overall/footer.tpl'}
