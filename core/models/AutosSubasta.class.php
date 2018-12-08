@@ -22,6 +22,8 @@ class AutosSubasta
     private $arranca;
     private $iva_incluido;
     private $comision;
+    private $seguro_caucion;
+    private $caucion_paga;
     private $observacion;
     private $deuda_patente;
     private $deuda_infr_caba;
@@ -52,7 +54,7 @@ class AutosSubasta
 
 
       $sql = "SELECT id, id_vendedor, marca, modelo, ano, dominio, kms, radicacion, ubicacion, id_combustible,
-                    arranca, iva_incluido, comision, observacion, deuda_patente, deuda_infr_caba, deuda_infr_bsas,
+                    arranca, iva_incluido, comision, seguro_caucion, caucion_paga, observacion, deuda_patente, deuda_infr_caba, deuda_infr_bsas,
                     visita_observaciones, visita_puntaje, visita_valor_aprox, valor_puja, precio_lista, gastos_aprox_gestor,
                     url_narvaez, fecha_cierre, hora_cierre, comprado, fecha, hora, id_usuario, estado
               FROM subastas_autos
@@ -62,7 +64,7 @@ class AutosSubasta
       $stmt->bind_param('i', $f_estado);
       $status = $stmt->execute();
       $stmt->bind_result($id, $id_vendedor, $marca, $modelo, $ano, $dominio, $kms, $radicacion, $ubicacion, $id_combustible, $arranca, $iva_incluido,
-            $comision, $observacion, $deuda_patente,$deuda_infr_caba, $deuda_infr_bsas, $visita_observaciones, $visita_puntaje, $visita_valor_aprox,
+            $comision, $seguro_caucion, $caucion_paga, $observacion, $deuda_patente,$deuda_infr_caba, $deuda_infr_bsas, $visita_observaciones, $visita_puntaje, $visita_valor_aprox,
             $valor_puja, $precio_lista, $gastos_aprox_gestor, $url_narvaez, $fecha_cierre, $hora_cierre, $comprado, $fecha, $hora, $id_usuario, $estado);
 
 
@@ -70,38 +72,40 @@ class AutosSubasta
         while($stmt->fetch()){
 
           $arrayResponse[$id] = array(
-            "id"  => $id,
-            "id_vendedor" => $id_vendedor,
-            "marca" => $marca,
-            "modelo"  => $modelo,
-            "ano" => $ano,
-            "dominio" => $dominio,
-            "kms" => $kms,
-            "radicacion"  => $radicacion,
-            "ubicacion" => $ubicacion,
-            "id_combustible" => $id_combustible,
-            "arranca" => $arranca,
-            "iva_incluido"  => ($iva_incluido==1) ? "Si" : "N/A",
-            "comision" => $comision,
-            "comision_valor"  => $this->calcularComision($comision, $valor_puja),
-            "observacion" => $observacion,
-            "deuda_patente" => $deuda_patente,
-            "deuda_infr_caba" => $deuda_infr_caba,
-            "deuda_infr_bsas" => $deuda_infr_bsas,
-            "visita_observaciones"  => $visita_observaciones,
-            "visita_puntaje"  => $visita_puntaje,
+            "id"                  => $id,
+            "id_vendedor"         => $id_vendedor,
+            "marca"               => $marca,
+            "modelo"              => $modelo,
+            "ano"                 => $ano,
+            "dominio"             => $dominio,
+            "kms"                 =>$kms,
+            "radicacion"          => $radicacion,
+            "ubicacion"           => $ubicacion,
+            "id_combustible"      => $id_combustible,
+            "arranca"             => $arranca,
+            "iva_incluido"        => ($iva_incluido==1) ? "Si" : "N/A",
+            "comision"            => $comision,
+            "caucion"             => $seguro_caucion,
+            "caucion_paga"        => $caucion_paga,
+            "comision_valor"      => $this->calcularComision($comision, $valor_puja),
+            "observacion"         => $observacion,
+            "deuda_patente"       => $deuda_patente,
+            "deuda_infr_caba"     => $deuda_infr_caba,
+            "deuda_infr_bsas"     => $deuda_infr_bsas,
+            "visita_observaciones"=> $visita_observaciones,
+            "visita_puntaje"      => $visita_puntaje,
             "visita_valor_aprox"  => $visita_valor_aprox,
-            "valor_puja" => $valor_puja,
-            "precio_lista"  => $precio_lista,
+            "valor_puja"          => $valor_puja,
+            "precio_lista"        => $precio_lista,
             "gastos_aprox_gestor" => $gastos_aprox_gestor,
-            "url_narvaez" => $url_narvaez,
-            "fecha_cierre"  => $fecha_cierre,
-            "hora_cierre" => $hora_cierre,
-            "comprado"  => $comprado,
-            "fecha" => $fecha,
-            "hora"  => $hora,
-            "id_usuario"  => $id_usuario,
-            "estado"  => $estado
+            "url_narvaez"         => $url_narvaez,
+            "fecha_cierre"        => $fecha_cierre,
+            "hora_cierre"         => $hora_cierre,
+            "comprado"            => $comprado,
+            "fecha"               => $fecha,
+            "hora"                => $hora,
+            "id_usuario"          => $id_usuario,
+            "estado"              => $estado
           );
         }
       }else{
@@ -188,6 +192,8 @@ class AutosSubasta
       $arranca      = $this->arranca;
       $ivaI         = $this->iva_incluido;
       $comision     = $this->comision;
+      $seguro_caucion = $this->seguro_caucion;
+      $caucion_paga = $this->caucion_paga;
       $obs          = $this->observacion;
       $d_pat        = $this->deuda_patente;
       $d_inf_caba   = $this->deuda_infr_caba;
@@ -209,15 +215,15 @@ class AutosSubasta
 
       $sql = "INSERT INTO subastas_autos
       (id_vendedor, marca, modelo, ano, dominio, kms, radicacion, ubicacion, id_combustible,
-                    arranca, iva_incluido, comision, observacion, deuda_patente, deuda_infr_caba, deuda_infr_bsas,
+                    arranca, iva_incluido, comision, seguro_caucion, caucion_paga, observacion, deuda_patente, deuda_infr_caba, deuda_infr_bsas,
                     visita_observaciones, visita_puntaje, visita_valor_aprox, valor_puja, precio_lista, gastos_aprox_gestor,
                     url_narvaez, fecha_cierre, hora_cierre, comprado, fecha, hora, id_usuario, estado)
        VALUES
-       (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
+       (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
 
        $stmt = $this->objConexion->mysqli->prepare($sql);
-       $stmt->bind_param('issisissiiiisiiisiiiiisssissi',$idVendedor, $marca, $modelo, $ano, $dom, $kms, $rad, $ubi, $comb, $arranca,
-              $ivaI, $comision, $obs, $d_pat, $d_inf_caba, $d_inf_bsas, $obs_vis, $vis_pun, $vis_val_aprox, $valor_puja, $precio_lista, $g_aprox_ges,
+       $stmt->bind_param('issisissiiiiiisiiisiiiiisssissi',$idVendedor, $marca, $modelo, $ano, $dom, $kms, $rad, $ubi, $comb, $arranca,
+              $ivaI, $comision, $seguro_caucion, $caucion_paga,$obs, $d_pat, $d_inf_caba, $d_inf_bsas, $obs_vis, $vis_pun, $vis_val_aprox, $valor_puja, $precio_lista, $g_aprox_ges,
               $url_narvaez, $fecha_cierre, $hora_cierre, $comprado, $fechaCarga, $horaCarga, $userCarga);
        $stmt->execute();
        if(!$stmt->errno){
@@ -229,7 +235,7 @@ class AutosSubasta
 
     }
 
-
+    //Obtener datos de subasta de un vehiculo
     public function getDatoAuto($idAuto){
       $arrayResponse = array();
 

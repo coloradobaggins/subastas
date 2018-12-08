@@ -29,6 +29,7 @@ if(isset($_SESSION['user'])){
       "arranca"               => $arranca,
       "iva_incluido"          => $ivaI,
       "comision"              => 10,
+      "seguro_caucion"        => $caucion,       
       "observacion"           => $obs,
       "deuda_patente"         => $d_pat,
       "deuda_infr_caba"       => $d_inf_caba,

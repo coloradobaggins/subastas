@@ -49,7 +49,7 @@
                           <!--<td>$ {$auto.totalAPagarMasDeuda}</td>-->
                           <td>$ {$auto.totalAPagar}</td>
                           <td>
-                            $ 5000
+                            {$auto.caucion}
                           </td>
                           <td class="info">
                             $ {$auto["promedioValores"] - ($auto.totalAPagarMasDeuda+$auto.gastos_aprox_gestor)}
@@ -121,20 +121,8 @@
                                           </ul>
                                         </div>
                                         <div class="col-md-6">
-                                          <!--
-                                          <h4>Valores autos cargados <button id="{$auto.id}" class="btn btn-info showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><i class="fa fa-plus-circle"></i></button></h4>
-                                          {if isset($auto["listadoValorCalle"])}
-                                            <ul>
-                                            {foreach from=$auto["listadoValorCalle"] item=valorCalle}
-                                              {if $valorCalle}
-                                              <li>$ {$valorCalle.valor} <button id="{$valorCalle.id}" class="btn btn-xs btn-danger deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button></li>
-                                              {/if}
-                                            {/foreach}
-                                          </ul>
-                                          {else}
-                                          Sin cargar
-                                          {/if}
-                                        -->
+                                          <h4>Caucion</h4>
+                                          <p>$ 5.000 <span class="label label-success">Pagada</span></p>
                                         </div>
                                       </div><!-- /.row -->
 

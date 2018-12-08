@@ -61,8 +61,14 @@
                                     <label class="sr-only" for="ubi">Ubicacion</label>
                                     <input type="text" id="ubi" name="ubi" class="form-control" placeholder="Ubicacion">
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="caucion">Seguro caucion</label>
+                                    <input type="text" id="caucion" name="caucion" class="form-control" placeholder="Seguro caucion">
+                                </div>
                               </div>
-                              <div class="col-md-3">
+
+                              <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="sr-only" for="vendedor">Vendedor</label>
                                   <select id="vendedor" name="vendedor" class="form-control">
@@ -71,13 +77,22 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-3">
-                                <p>Comision 10%</p>
+
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="sr-only" for="caucion_paga">Caucion Paga?</label>
+                                  <select id="caucion_paga" name="caucion_paga" class="form-control">
+                                    <option value="">Caucion paga?</option>
+                                    <option value="0">NO</option>
+                                    <option value="1">SI</option>
+                                  </select>
+                                </div>
                               </div>
+
                             </div><!-- /.row -->
 
                             <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="comb">Combustible</label>
                                   <select id="comb" name="comb" class="form-control">
@@ -88,7 +103,7 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="arranca">Arranca</label>
                                   <select id="arranca" name="arranca" class="form-control">
@@ -97,7 +112,7 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="ivaI">Iva Incluido</label>
                                   <select id="ivaI" name="ivaI" class="form-control">
@@ -105,6 +120,9 @@
                                     <option value="1">No</option>
                                   </select>
                                 </div>
+                              </div>
+                              <div class="col-md-3">
+                                <p class="label label-warning">Comision 10%</p>
                               </div>
                             </div><!-- /.row -->
 

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-07 10:29:55
+<?php /* Smarty version 3.1.27, created on 2018-12-08 13:55:12
          compiled from "/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:16975693715c0a75d39f9a73_18907106%%*/
+/*%%SmartyHeaderCode:3561381815c0bf770454913_43193440%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,26 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '481639398c8b924965413ee462cbb23cdeeded13' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/subastas/styles/templates/autosSubasta.tpl',
-      1 => 1544189394,
+      1 => 1544288110,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16975693715c0a75d39f9a73_18907106',
+  'nocache_hash' => '3561381815c0bf770454913_43193440',
   'variables' => 
   array (
     'arrayAutos' => 0,
     'auto' => 0,
-    'valorCalle' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0a75d3a79387_58024800',
+  'unifunc' => 'content_5c0bf7705841b7_26927983',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0a75d3a79387_58024800')) {
-function content_5c0a75d3a79387_58024800 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0bf7705841b7_26927983')) {
+function content_5c0bf7705841b7_26927983 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '16975693715c0a75d39f9a73_18907106';
+$_smarty_tpl->properties['nocache_hash'] = '3561381815c0bf770454913_43193440';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -104,7 +103,8 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                           <td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagar'];?>
 </td>
                           <td>
-                            $ 5000
+                            <?php echo $_smarty_tpl->tpl_vars['auto']->value['caucion'];?>
+
                           </td>
                           <td class="info">
                             $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"]-($_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor']);?>
@@ -190,36 +190,8 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                                           </ul>
                                         </div>
                                         <div class="col-md-6">
-                                          <!--
-                                          <h4>Valores autos cargados <button id="<?php echo $_smarty_tpl->tpl_vars['auto']->value['id'];?>
-" class="btn btn-info showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><i class="fa fa-plus-circle"></i></button></h4>
-                                          <?php if (isset($_smarty_tpl->tpl_vars['auto']->value["listadoValorCalle"])) {?>
-                                            <ul>
-                                            <?php
-$_from = $_smarty_tpl->tpl_vars['auto']->value["listadoValorCalle"];
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$_smarty_tpl->tpl_vars['valorCalle'] = new Smarty_Variable;
-$_smarty_tpl->tpl_vars['valorCalle']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['valorCalle']->value) {
-$_smarty_tpl->tpl_vars['valorCalle']->_loop = true;
-$foreach_valorCalle_Sav = $_smarty_tpl->tpl_vars['valorCalle'];
-?>
-                                              <?php if ($_smarty_tpl->tpl_vars['valorCalle']->value) {?>
-                                              <li>$ <?php echo $_smarty_tpl->tpl_vars['valorCalle']->value['valor'];?>
- <button id="<?php echo $_smarty_tpl->tpl_vars['valorCalle']->value['id'];?>
-" class="btn btn-xs btn-danger deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button></li>
-                                              <?php }?>
-                                            <?php
-$_smarty_tpl->tpl_vars['valorCalle'] = $foreach_valorCalle_Sav;
-}
-?>
-                                          </ul>
-                                          <?php } else { ?>
-                                          Sin cargar
-                                          <?php }?>
-                                        -->
+                                          <h4>Caucion</h4>
+                                          <p>$ 5.000 <span class="label label-success">Pagada</span></p>
                                         </div>
                                       </div><!-- /.row -->
 
