@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-11-2018 a las 02:26:32
+-- Tiempo de generación: 10-12-2018 a las 15:58:36
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -66,7 +66,9 @@ CREATE TABLE `autos_gastos_gestoria` (
 --
 
 INSERT INTO `autos_gastos_gestoria` (`id`, `id_auto`, `id_usuario_pago`, `monto`, `observacion`, `pagado`, `fecha_pago`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
-(1, 1, 2, 1000, 'Formulario ceta', 1, '2018-10-23', '2018-10-29', '10:00:00', 1, 1);
+(1, 1, 2, 1000, 'Formulario ceta', 1, '2018-10-23', '2018-10-29', '10:00:00', 1, 1),
+(2, 2, 2, 3000, 'Para infracciones pendientes', 1, '2018-11-30', '2018-12-02', '09:37:10', 1, 1),
+(3, 2, 2, 2000, 'prueba', 1, '2018-01-01', '2018-12-05', '00:29:25', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,11 @@ CREATE TABLE `autos_gastos_infracciones` (
 --
 
 INSERT INTO `autos_gastos_infracciones` (`id`, `id_auto`, `id_usuario_pago`, `monto`, `fecha_infraccion`, `lugar`, `observacion`, `pagado`, `fechaPago`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
-(1, 1, 1, 4000, '2018-10-02', 'Entre rios', 'Multa por estacionar mal', 0, '2018-01-01', '2018-10-29', '15:00:00', 1, 1);
+(1, 1, 1, 4000, '2018-10-02', 'Entre rios', 'Multa por estacionar mal', 0, '2018-01-01', '2018-10-29', '15:00:00', 1, 1),
+(2, 2, 2, 10000, '2018-01-01', 'CABA', 'Semaforo en rojo', 0, NULL, '2018-12-02', '09:37:42', 1, 1),
+(3, 2, 1, 4000, '2010-10-10', 'CABA', 'Senda peatonal', 0, NULL, '2018-12-03', '20:44:09', 1, 1),
+(4, 2, 1, 2000, '2018-01-01', 'bs as', 'vel max', 0, NULL, '2018-12-05', '00:02:42', 1, 1),
+(5, 2, 2, 5000, '2018-10-10', 'santa fe', 'PRUEBA', 0, NULL, '2018-12-05', '00:30:17', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +128,9 @@ CREATE TABLE `autos_gastos_otros` (
 --
 
 INSERT INTO `autos_gastos_otros` (`id`, `id_auto`, `id_usuario_pago`, `monto`, `observacion`, `pagado`, `fechaPago`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
-(1, 1, 2, 1200, 'Kms a este auto de prueba', 1, '2018-10-25', '2018-10-28', '15:00:00', 1, 1);
+(1, 1, 2, 1200, 'Kms a este auto de prueba', 1, '2018-10-25', '2018-10-28', '15:00:00', 1, 1),
+(2, 2, 1, 1200, 'Bajar kms', 1, '2018-11-01', '2018-12-03', '20:44:34', 1, 1),
+(3, 2, 2, 1000, 'prueba', 0, '0000-00-00', '2018-12-05', '00:57:14', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +186,9 @@ CREATE TABLE `auto_comprado` (
 
 INSERT INTO `auto_comprado` (`id`, `id_subasta`, `marca`, `modelo`, `ano`, `dominio`, `kms`, `radicacion`, `id_combustible`, `arranca`, `observacion`, `monto`, `gastos_gestor`, `id_usuario_comprador`, `fecha_compra`, `id_usuario`, `fecha`, `hora`, `estado`) VALUES
 (1, 13, 'Prueba', 'Prueba', 2018, 'ac123kw', 15000, 'Campana', 3, 1, NULL, 154000, 0, 1, '2018-10-29', 1, '2018-10-28', '23:20:04', 1),
-(2, 9, 'Ford', 'Focus exe style 1.6', 2010, 'JGM542', 247574, 'CABA', 1, 1, '-No arranca, con posibles faltantes', 121000, 13800, 2, '2018-10-21', 1, '2018-11-21', '14:43:07', 1);
+(2, 9, 'Ford', 'Focus exe style 1.6', 2010, 'JGM542', 247574, 'CABA', 1, 1, '-No arranca, con posibles faltantes', 121000, 13800, 2, '2018-10-21', 1, '2018-11-21', '14:43:07', 1),
+(3, 21, 'Volks22', 'gol22', 2000, 'asd123', 12344, 'bsas', 1, 0, 'asdasdasdasd', 130000, 12000, 1, '2018-12-06', 1, '2018-12-06', '23:33:35', 1),
+(4, 20, 'Volks', 'gol', 2000, 'asd123', 12344, 'bsas', 1, 0, 'asdasdasdasd', 203000, 12000, 2, '2018-12-07', 1, '2018-12-07', '01:46:04', 1);
 
 -- --------------------------------------------------------
 
@@ -259,6 +269,8 @@ CREATE TABLE `subastas_autos` (
   `arranca` tinyint(1) NOT NULL,
   `iva_incluido` tinyint(1) NOT NULL DEFAULT '1',
   `comision` smallint(3) NOT NULL DEFAULT '10',
+  `seguro_caucion` int(11) NOT NULL,
+  `caucion_paga` tinyint(1) NOT NULL DEFAULT '0',
   `observacion` text,
   `deuda_patente` int(6) NOT NULL,
   `deuda_infr_caba` int(6) NOT NULL,
@@ -283,20 +295,20 @@ CREATE TABLE `subastas_autos` (
 -- Volcado de datos para la tabla `subastas_autos`
 --
 
-INSERT INTO `subastas_autos` (`id`, `id_vendedor`, `marca`, `modelo`, `ano`, `dominio`, `kms`, `radicacion`, `ubicacion`, `id_combustible`, `arranca`, `iva_incluido`, `comision`, `observacion`, `deuda_patente`, `deuda_infr_caba`, `deuda_infr_bsas`, `visita_observaciones`, `visita_puntaje`, `visita_valor_aprox`, `valor_puja`, `precio_lista`, `gastos_aprox_gestor`, `url_narvaez`, `fecha_cierre`, `hora_cierre`, `comprado`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
-(9, 2, 'Ford', 'Focus exe style 1.6', 2010, 'JGM542', 247574, 'CABA', 'Campana', 1, 1, 1, 10, '-No arranca, con posibles faltantes', 0, 0, 0, 'El auto arranca', NULL, NULL, 121000, 178543, 13800, NULL, '2018-08-03', '14:00:00', 1, '2018-09-27', '11:00:00', 1, 1),
-(10, 2, 'Ford', 'Focus exe style 1.6', 2010, 'JGM544', 211237, 'CABA', 'Campana', 1, 1, 1, 10, '-No arranca, con posible faltantes', 0, 0, 0, 'Arranca', NULL, NULL, 121000, 178543, 13800, NULL, '2018-08-03', '14:00:00', 0, '2018-09-27', '11:00:00', 1, 1),
-(11, 3, 'Volkswagen', 'Suran 1.6L', 2011, 'JSC600', NULL, 'CABA', 'Tortuguitas', 1, 1, 1, 10, 'Arranca, carroceria afectada por raspones', 0, 0, 0, NULL, NULL, NULL, 133000, 180000, 13480, NULL, '2018-09-26', '11:00:00', 0, '2018-09-27', '19:00:00', 1, 1),
-(12, 3, 'Volkswagen', 'Suran 1.6L', 2012, 'LTH041', 204584, 'CABA', 'Tortuguitas', 1, 1, 1, 10, 'Carroceria afectada por golpes y raspones', 0, 0, 0, NULL, NULL, NULL, 132000, 180000, 13480, NULL, '2018-09-26', '11:00:00', 0, '2018-09-27', '11:00:00', 1, 1),
-(13, 1, 'Prueba', 'Prueba', 2018, 'ac123kw', 15000, 'Campana', 'Campana', 3, 1, 1, 10, NULL, 0, 0, 0, NULL, NULL, NULL, 150000, 175000, 0, NULL, '2018-10-28', '11:00:00', 1, '2018-10-28', '22:38:00', 1, 1),
-(15, 1, 'Peugeot', 'Berlingo 1.6 sx am54', 2014, 'aaaaaa', 117000, 'NOSE', 'NOSE', 1, 1, 1, 10, NULL, 0, 0, 0, NULL, NULL, NULL, 160000, 270000, 20000, NULL, '2018-11-14', '14:00:00', 0, '2018-11-13', '00:00:00', 1, 1),
-(16, 1, 'Renault', 'Clio Mio 5p', 2014, 'NPW114', 64000, 'BS AS', 'San Fernando', 1, 1, 1, 10, 'Cerradura baul rota, comando llave roto, taza rota, falta tapa de paragolpe delantero', 6385, 2172, 4345, NULL, NULL, NULL, 80000, 200000, 14000, NULL, '2018-11-15', '14:00:00', 0, '2018-11-13', '12:00:00', 1, 1),
-(17, 1, 'Renault', 'Duster Privielege 2.0 PH2', 2017, 'AB547GX', 32000, 'BS AS', 'San Fernando', 1, 1, 1, 10, NULL, 31000, 3570, 0, NULL, NULL, NULL, 280000, 450000, 40000, NULL, '2018-11-15', '11:00:00', 0, '2018-11-13', '18:00:00', 1, 1),
-(18, 1, 'volks', 'gol', 1999, 'acd123', 300000, 'rad', 'campana', 1, 1, 1, 10, 'obs', 0, 0, 0, 'obs vis', 10, 0, 130000, 120000, 20000, 'url', '2018-11-21', '14:00:00', 0, '2018-11-21', '12:00:00', 1, 1),
-(19, 1, 'marca', 'modelo', 1989, 'dom123', 189000, 'rad', 'campana', 1, 1, 1, 10, 'observacion', 10000, 0, 0, 'sin obs', 0, 0, 134000, 110000, 10000, 'url', '2018-11-21', '14:00:00', 0, '2018-11-21', '14:00:00', 1, 1),
-(20, 1, 'Volks', 'gol', 2000, 'asd123', 12344, 'bsas', 'campana', 1, 0, 0, 10, 'asdasdasdasd', 0, 0, 0, '', 1, 0, 12300, 80000, 12000, '', '2018-11-30', '14:00:00', 0, '2018-11-21', '14:17:18', 1, 1),
-(21, 1, 'Volks22', 'gol22', 2000, 'asd123', 12344, 'bsas', 'campana', 1, 0, 0, 10, 'asdasdasdasd', 0, 0, 0, '', 1, 0, 123000, 80000, 12000, '', '2018-11-30', '14:00:00', 0, '2018-11-21', '14:17:47', 1, 1),
-(22, 1, 'prueba1', 'modelo1', 2018, 'ac123jk', 0, 'caba', 'san fernando', 2, 1, 0, 10, 'HOla', 0, 0, 0, '', 0, 0, 0, 0, 0, '', '0000-00-00', '00:00:00', 0, '2018-11-21', '14:20:46', 1, 1);
+INSERT INTO `subastas_autos` (`id`, `id_vendedor`, `marca`, `modelo`, `ano`, `dominio`, `kms`, `radicacion`, `ubicacion`, `id_combustible`, `arranca`, `iva_incluido`, `comision`, `seguro_caucion`, `caucion_paga`, `observacion`, `deuda_patente`, `deuda_infr_caba`, `deuda_infr_bsas`, `visita_observaciones`, `visita_puntaje`, `visita_valor_aprox`, `valor_puja`, `precio_lista`, `gastos_aprox_gestor`, `url_narvaez`, `fecha_cierre`, `hora_cierre`, `comprado`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
+(9, 2, 'Ford', 'Focus exe style 1.6', 2010, 'JGM542', 247574, 'CABA', 'Campana', 1, 1, 1, 10, 0, 0, '-No arranca, con posibles faltantes', 0, 0, 0, 'El auto arranca', NULL, NULL, 121000, 178543, 13800, NULL, '2018-08-03', '14:00:00', 1, '2018-09-27', '11:00:00', 1, 1),
+(10, 2, 'Ford', 'Focus exe style 1.6', 2010, 'JGM544', 211237, 'CABA', 'Campana', 1, 1, 1, 10, 0, 0, '-No arranca, con posible faltantes', 0, 0, 0, 'Arranca', NULL, NULL, 121000, 178543, 13800, NULL, '2018-08-03', '14:00:00', 0, '2018-09-27', '11:00:00', 1, 1),
+(11, 3, 'Volkswagen', 'Suran 1.6L', 2011, 'JSC600', NULL, 'CABA', 'Tortuguitas', 1, 1, 1, 10, 0, 0, 'Arranca, carroceria afectada por raspones', 0, 0, 0, NULL, NULL, NULL, 133000, 180000, 13480, NULL, '2018-09-26', '11:00:00', 0, '2018-09-27', '19:00:00', 1, 1),
+(12, 3, 'Volkswagen', 'Suran 1.6L', 2012, 'LTH041', 204584, 'CABA', 'Tortuguitas', 1, 1, 1, 10, 0, 0, 'Carroceria afectada por golpes y raspones', 0, 0, 0, NULL, NULL, NULL, 132000, 180000, 13480, NULL, '2018-09-26', '11:00:00', 0, '2018-09-27', '11:00:00', 1, 1),
+(13, 1, 'Prueba', 'Prueba', 2018, 'ac123kw', 15000, 'Campana', 'Campana', 3, 1, 1, 10, 0, 0, NULL, 0, 0, 0, NULL, NULL, NULL, 150000, 175000, 0, NULL, '2018-10-28', '11:00:00', 1, '2018-10-28', '22:38:00', 1, 1),
+(15, 1, 'Peugeot', 'Berlingo 1.6 sx am54', 2014, 'aaaaaa', 117000, 'NOSE', 'NOSE', 1, 1, 1, 10, 0, 0, NULL, 0, 0, 0, NULL, NULL, NULL, 160000, 270000, 20000, NULL, '2018-11-14', '14:00:00', 0, '2018-11-13', '00:00:00', 1, 1),
+(16, 1, 'Renault', 'Clio Mio 5p', 2014, 'NPW114', 64000, 'BS AS', 'San Fernando', 1, 1, 1, 10, 0, 0, 'Cerradura baul rota, comando llave roto, taza rota, falta tapa de paragolpe delantero', 6385, 2172, 4345, NULL, NULL, NULL, 80000, 200000, 14000, NULL, '2018-11-15', '14:00:00', 0, '2018-11-13', '12:00:00', 1, 1),
+(17, 1, 'Renault', 'Duster Privielege 2.0 PH2', 2017, 'AB547GX', 32000, 'BS AS', 'San Fernando', 1, 1, 1, 10, 0, 0, NULL, 31000, 3570, 0, NULL, NULL, NULL, 280000, 450000, 40000, NULL, '2018-11-15', '11:00:00', 0, '2018-11-13', '18:00:00', 1, 1),
+(18, 1, 'volks', 'gol', 1999, 'acd123', 300000, 'rad', 'campana', 1, 1, 1, 10, 0, 0, 'obs', 0, 0, 0, 'obs vis', 10, 0, 130000, 120000, 20000, 'url', '2018-11-21', '14:00:00', 0, '2018-11-21', '12:00:00', 1, 1),
+(19, 1, 'marca', 'modelo', 1989, 'dom123', 189000, 'rad', 'campana', 1, 1, 1, 10, 0, 0, 'observacion', 10000, 0, 0, 'sin obs', 0, 0, 134000, 110000, 10000, 'url', '2018-11-21', '14:00:00', 0, '2018-11-21', '14:00:00', 1, 1),
+(20, 1, 'Volks', 'gol', 2000, 'asd123', 12344, 'bsas', 'campana', 1, 0, 0, 10, 0, 0, 'asdasdasdasd', 0, 0, 0, '', 1, 0, 12300, 80000, 12000, '', '2018-11-30', '14:00:00', 1, '2018-11-21', '14:17:18', 1, 1),
+(21, 1, 'Volks22', 'gol22', 2000, 'asd123', 12344, 'bsas', 'campana', 1, 0, 0, 10, 0, 0, 'asdasdasdasd', 0, 4000, 1000, '', 1, 0, 130000, 80000, 12000, '', '2018-11-30', '14:00:00', 1, '2018-11-21', '14:17:47', 1, 1),
+(22, 1, 'prueba1', 'modelo1', 2018, 'ac123jk', 0, 'caba', 'san fernando', 2, 1, 0, 10, 0, 0, 'HOla', 0, 0, 0, '', 0, 0, 0, 0, 0, '', '0000-00-00', '00:00:00', 0, '2018-11-21', '14:20:46', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -314,6 +326,13 @@ CREATE TABLE `subastas_gastos_otros` (
   `id_usuario` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `subastas_gastos_otros`
+--
+
+INSERT INTO `subastas_gastos_otros` (`id`, `idAutoSubasta`, `observacion`, `monto`, `fecha`, `hora`, `id_usuario`, `estado`) VALUES
+(1, 18, 'Traslado vehiculo 0km', 7000, '2018-12-07', '12:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -364,8 +383,10 @@ CREATE TABLE `subastas_valor_calle` (
 --
 
 INSERT INTO `subastas_valor_calle` (`id`, `id_auto`, `valor`, `url`, `estado`) VALUES
-(1, 20, 140000, NULL, 1),
-(2, 20, 110000, NULL, 1);
+(1, 20, 140000, 'facebook', 1),
+(4, 10, 230000, 'Mercado libre', 1),
+(5, 10, 200000, 'Facebook', 1),
+(7, 18, 4000, '', 1);
 
 -- --------------------------------------------------------
 
@@ -539,17 +560,17 @@ ALTER TABLE `autos_combustible`
 -- AUTO_INCREMENT de la tabla `autos_gastos_gestoria`
 --
 ALTER TABLE `autos_gastos_gestoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `autos_gastos_infracciones`
 --
 ALTER TABLE `autos_gastos_infracciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `autos_gastos_otros`
 --
 ALTER TABLE `autos_gastos_otros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `autos_gastos_patentes`
 --
@@ -559,7 +580,7 @@ ALTER TABLE `autos_gastos_patentes`
 -- AUTO_INCREMENT de la tabla `auto_comprado`
 --
 ALTER TABLE `auto_comprado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `auto_comprado_deudas`
 --
@@ -579,7 +600,7 @@ ALTER TABLE `subastas_autos`
 -- AUTO_INCREMENT de la tabla `subastas_gastos_otros`
 --
 ALTER TABLE `subastas_gastos_otros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `subastas_gestion_admin`
 --
@@ -589,7 +610,7 @@ ALTER TABLE `subastas_gestion_admin`
 -- AUTO_INCREMENT de la tabla `subastas_valor_calle`
 --
 ALTER TABLE `subastas_valor_calle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Agregar montos de un modelos de vehículo, para luego poder promediar un estimado', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Agregar montos de un modelos de vehículo, para luego poder promediar un estimado', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `subastas_vendedor`
 --
