@@ -1,4 +1,10 @@
 <?php
+/***************************************/
+//detalle auto comprado
+//*************************************/
+
+
+
 if(isset($_SESSION['user'])){
 
 	include('core/models/AutosComprado.class.php');

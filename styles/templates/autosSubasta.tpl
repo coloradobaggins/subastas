@@ -49,7 +49,11 @@
                           <!--<td>$ {$auto.totalAPagarMasDeuda}</td>-->
                           <td>$ {$auto.totalAPagar}</td>
                           <td>
-                            {$auto.caucion}
+                            {if $auto.caucion_paga==0}
+                                $ {$auto.caucion}
+                            {else}
+                                <span class="label label-success">Paga</span>
+                            {/if}
                           </td>
                           <td class="info">
                             $ {$auto["promedioValores"] - ($auto.totalAPagarMasDeuda+$auto.gastos_aprox_gestor)}
@@ -148,11 +152,11 @@
                                           <div class="col-md-6">
                                             <p>Acciones</p>
                                             {if $auto.comprado==1}
-                                              <a class="btn btn-success" href="?view=autoComprado&idComprado={$auto.idAutoComprado}">COMPRADO! (Ver)</a>
+                                              <a class="btn btn-success" href="?view=autoDetalleComprado&idComprado={$auto.idAutoComprado}">COMPRADO! (Ver)</a>
                                             {else}
 
                                               <button id="{$auto.id}" class="btn btn-default comprar" data-toggle="modal" data-target="#modalComprar"><span class="glyphicon glyphicon-usd"></span> COMPRAR</button>
-                                              <a class="btn btn-info" href="?view=autoDetalle&idAuto={$auto.id}">Ver detalles</a>
+                                              <a class="btn btn-info" href="?view=autoDetalleSubasta&idAuto={$auto.id}">Ver detalles</a>
                                             {/if}
 
                                             <button id="{$auto.id}" class="btn btn-danger disableAuto"> Desactivar</button>
@@ -171,8 +175,8 @@
                                           <div class="col-md-4">
                                             <p>Calcular otras Ganancias</p>
 
-                                            <p>Costo Total: <b>$ <span class="valorTotalAuto">{$auto.totalAPagarMasDeuda + $auto.gastos_aprox_gestor}</span></b></p>
-                                            Venta a: <input type="number" id="" class="montoProvisorio" name="" placeholder="Monto">
+                                            <p>Costo Total: <b>$ <span class="valorTotalAuto">{$auto.totalAPagar}</span></b></p>
+                                            Venta a: $ <input type="number" id="" class="montoProvisorio" name="" placeholder="Monto">
                                             <button class="btn btn-info btn-xs cacularValorProvisorio"><span class="glyphicon glyphicon-check"></span></button>
                                             <p>Ganancia: <b>$ <span class="gananciaProv"></span></b></p>
                                           </div>

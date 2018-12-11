@@ -1,6 +1,8 @@
 <?php
-
+/***************************************/
 //detalle auto subasta
+//*************************************/
+
 include("core/models/AutosSubasta.class.php");
 include("core/models/GastosAdm.class.php");
 include("core/models/Usuarios.class.php");

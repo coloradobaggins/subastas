@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-11 09:26:09
+<?php /* Smarty version 3.1.27, created on 2018-12-11 11:17:55
          compiled from "C:\xampp\htdocs\subastas\styles\templates\autosSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:12516777735c0face1d36c24_79746355%%*/
+/*%%SmartyHeaderCode:18164391515c0fc713293655_29202290%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '68e6a28327bb3b97049419b6fd9d00c0589f9b55' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\autosSubasta.tpl',
-      1 => 1544531166,
+      1 => 1544537872,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '12516777735c0face1d36c24_79746355',
+  'nocache_hash' => '18164391515c0fc713293655_29202290',
   'variables' => 
   array (
     'arrayAutos' => 0,
@@ -21,13 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0face1dc3647_43742577',
+  'unifunc' => 'content_5c0fc713362703_65072183',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0face1dc3647_43742577')) {
-function content_5c0face1dc3647_43742577 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0fc713362703_65072183')) {
+function content_5c0fc713362703_65072183 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '12516777735c0face1d36c24_79746355';
+$_smarty_tpl->properties['nocache_hash'] = '18164391515c0fc713293655_29202290';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -103,8 +103,12 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                           <td>$ <?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagar'];?>
 </td>
                           <td>
-                            <?php echo $_smarty_tpl->tpl_vars['auto']->value['caucion'];?>
+                            <?php if ($_smarty_tpl->tpl_vars['auto']->value['caucion_paga'] == 0) {?>
+                                $ <?php echo $_smarty_tpl->tpl_vars['auto']->value['caucion'];?>
 
+                            <?php } else { ?>
+                                <span class="label label-success">Paga</span>
+                            <?php }?>
                           </td>
                           <td class="info">
                             $ <?php echo $_smarty_tpl->tpl_vars['auto']->value["promedioValores"]-($_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor']);?>
@@ -218,13 +222,13 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                                           <div class="col-md-6">
                                             <p>Acciones</p>
                                             <?php if ($_smarty_tpl->tpl_vars['auto']->value['comprado'] == 1) {?>
-                                              <a class="btn btn-success" href="?view=autoComprado&idComprado=<?php echo $_smarty_tpl->tpl_vars['auto']->value['idAutoComprado'];?>
+                                              <a class="btn btn-success" href="?view=autoDetalleComprado&idComprado=<?php echo $_smarty_tpl->tpl_vars['auto']->value['idAutoComprado'];?>
 ">COMPRADO! (Ver)</a>
                                             <?php } else { ?>
 
                                               <button id="<?php echo $_smarty_tpl->tpl_vars['auto']->value['id'];?>
 " class="btn btn-default comprar" data-toggle="modal" data-target="#modalComprar"><span class="glyphicon glyphicon-usd"></span> COMPRAR</button>
-                                              <a class="btn btn-info" href="?view=autoDetalle&idAuto=<?php echo $_smarty_tpl->tpl_vars['auto']->value['id'];?>
+                                              <a class="btn btn-info" href="?view=autoDetalleSubasta&idAuto=<?php echo $_smarty_tpl->tpl_vars['auto']->value['id'];?>
 ">Ver detalles</a>
                                             <?php }?>
 
@@ -246,9 +250,9 @@ $foreach_auto_Sav = $_smarty_tpl->tpl_vars['auto'];
                                           <div class="col-md-4">
                                             <p>Calcular otras Ganancias</p>
 
-                                            <p>Costo Total: <b>$ <span class="valorTotalAuto"><?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagarMasDeuda']+$_smarty_tpl->tpl_vars['auto']->value['gastos_aprox_gestor'];?>
+                                            <p>Costo Total: <b>$ <span class="valorTotalAuto"><?php echo $_smarty_tpl->tpl_vars['auto']->value['totalAPagar'];?>
 </span></b></p>
-                                            Venta a: <input type="number" id="" class="montoProvisorio" name="" placeholder="Monto">
+                                            Venta a: $ <input type="number" id="" class="montoProvisorio" name="" placeholder="Monto">
                                             <button class="btn btn-info btn-xs cacularValorProvisorio"><span class="glyphicon glyphicon-check"></span></button>
                                             <p>Ganancia: <b>$ <span class="gananciaProv"></span></b></p>
                                           </div>
