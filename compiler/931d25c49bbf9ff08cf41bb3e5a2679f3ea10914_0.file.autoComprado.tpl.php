@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-02 23:31:27
+<?php /* Smarty version 3.1.27, created on 2018-12-11 09:31:55
          compiled from "C:\xampp\htdocs\subastas\styles\templates\comprados\autoComprado.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:617825045c04957f8951e1_66476496%%*/
+/*%%SmartyHeaderCode:6237307445c0fae3b8bfc34_94384576%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,30 +9,41 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '931d25c49bbf9ff08cf41bb3e5a2679f3ea10914' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\comprados\\autoComprado.tpl',
-      1 => 1543804186,
+      1 => 1544453170,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '617825045c04957f8951e1_66476496',
+  'nocache_hash' => '6237307445c0fae3b8bfc34_94384576',
   'variables' => 
   array (
     'arrDatosAuto' => 0,
+    'arrValoresCalle' => 0,
+    'valorAuto' => 0,
+    'promVal' => 0,
     'arrGastosGes' => 0,
     'g_gestoria' => 0,
-    'arrGastosOtros' => 0,
-    'gasto' => 0,
+    'sumGastosG' => 0,
     'arrGastosInfr' => 0,
     'gastoInfr' => 0,
+    'sumGastosInfr' => 0,
+    'arrGastosOtros' => 0,
+    'gasto' => 0,
+    'sumGastosO' => 0,
+    'arrGastosPorUsr' => 0,
+    'datosGastos' => 0,
+    'sumGastos' => 0,
+    'montoGasto' => 0,
+    'userGasto' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c04957f944e84_10416996',
+  'unifunc' => 'content_5c0fae3b967bd5_14469082',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c04957f944e84_10416996')) {
-function content_5c04957f944e84_10416996 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0fae3b967bd5_14469082')) {
+function content_5c0fae3b967bd5_14469082 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '617825045c04957f8951e1_66476496';
+$_smarty_tpl->properties['nocache_hash'] = '6237307445c0fae3b8bfc34_94384576';
 ?>
  <!DOCTYPE html>
 <html lang="es">
@@ -51,7 +62,6 @@ $_smarty_tpl->properties['nocache_hash'] = '617825045c04957f8951e1_66476496';
   <div class="container">
     <div class="row">
 
-      <h2>Comprado - Detalle</h2>
     </div>
   </div>
 
@@ -59,53 +69,91 @@ $_smarty_tpl->properties['nocache_hash'] = '617825045c04957f8951e1_66476496';
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <?php if (isset($_smarty_tpl->tpl_vars['arrDatosAuto']->value)) {?>
+          <h2>Comprado - Detalle <button class="btn btn-xs btn-warning pull-right">Actualizar datos</button></h2>
+        </div>
+      </div>
+    </div><!-- /.container -->
 
-          <table class="table">
+    <div class="container">
+      <div class="row">
+        <?php if (isset($_smarty_tpl->tpl_vars['arrDatosAuto']->value)) {?>
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">Marca: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['marca'];?>
+</li>
+              <li class="list-group-item">Modelo: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['modelo'];?>
+</li>
+              <li class="list-group-item">Dominio: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['dominio'];?>
+</li>
+              <li class="list-group-item">Radicacion: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['radicacion'];?>
+</li>
+            </ul>
+          </div>
 
-              <thead>
-                  <tr>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>A&ntilde;o</th>
-                      <th>DOM</th>
-                      <th>KMS</th>
-                      <th>Comustible</th>
-                      <th>Monto</th>
-                      <th>Comprador</th>
-                      <th>Fecha Compra</th>
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">A&Ntilde;O: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['ano'];?>
+</li>
+              <li class="list-group-item">KMS: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['kms'];?>
+</li>
+              <li class="list-group-item">Combustible: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['combustible'];?>
+</li>
+            </ul>
+          </div>
 
-                  </tr>
-              </thead>
-              <tbody>
+          <div class="col-md-4">
+            <ul>
+              <li class="list-group-item">Monto: $ <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['monto'];?>
+</li>
+              <li class="list-group-item">Comprador: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['nombre'];?>
+</li>
+              <li class="list-group-item">Fecha Compra: <?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['fecha_compra'];?>
+</li>
+            </ul>
+          </div>
+        <?php } else { ?>
+          <div class="col-md-12">
+            <div class="alert alert-warning">
+              <p>Sin datos</p>
+            </div>
+          </div>
+        <?php }?>
 
-                <tr>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['marca'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['modelo'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['ano'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['dominio'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['kms'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['id_comustible'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['monto'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['nombre'];?>
-</td>
-                  <td><?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['fecha_compra'];?>
-</td>
-                </tr>
+      </div><!-- /.row -->
 
-              </tbody>
-            </table>
+      <div class="row">
+        <div class="col-md-12">
 
+          <ul class="list-group">
+            <li class="list-group-item active">Valores autos cargados <button id="<?php echo $_smarty_tpl->tpl_vars['arrDatosAuto']->value['id_subasta'];?>
+" class="btn btn-xs btn-success pull-right showAddValoresModal" data-toggle="modal" data-target="#modalValorCalle"><span class="glyphicon glyphicon-plus"></span></button></li>
+          <?php if (isset($_smarty_tpl->tpl_vars['arrValoresCalle']->value)) {?>
+            <?php
+$_from = $_smarty_tpl->tpl_vars['arrValoresCalle']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['valorAuto'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['valorAuto']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['valorAuto']->value) {
+$_smarty_tpl->tpl_vars['valorAuto']->_loop = true;
+$foreach_valorAuto_Sav = $_smarty_tpl->tpl_vars['valorAuto'];
+?>
+              <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['url'];?>
+ <button id="<?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['id'];?>
+" class="btn btn-xs btn-danger pull-right deleteValorCalle"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['valorAuto']->value['valor'];?>
+</span></li>
+            <?php
+$_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
+}
+?>
+              <li class="list-group-item list-group-item-success">Promedio <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['promVal']->value;?>
+</span></li>
 
           <?php } else { ?>
-            <p>Sin datos</p>
+            <li class="list-group-item list-group-item-warning">Sin cargar</li>
+          </ul>
+
           <?php }?>
         </div>
       </div>
@@ -114,6 +162,7 @@ $_smarty_tpl->properties['nocache_hash'] = '617825045c04957f8951e1_66476496';
 
 
     <div class="container">
+
       <div class="row">
         <div class="col-md-6">
           <h4>Gastos</h4>
@@ -132,49 +181,20 @@ foreach ($_from as $_smarty_tpl->tpl_vars['g_gestoria']->value) {
 $_smarty_tpl->tpl_vars['g_gestoria']->_loop = true;
 $foreach_g_gestoria_Sav = $_smarty_tpl->tpl_vars['g_gestoria'];
 ?>
-              <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['observacion'];?>
+              <li class="list-group-item"><button id="<?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['id'];?>
+" class="btn btn-xs btn-danger pull-right deleteGG"><span class="glyphicon glyphicon-trash"><span></button> <?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['observacion'];?>
 <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['monto'];?>
 </span> <span class="badge"><?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['usrPago'];?>
-</span><button id="<?php echo $_smarty_tpl->tpl_vars['g_gestoria']->value['id'];?>
-" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
+</span></li>
             <?php
 $_smarty_tpl->tpl_vars['g_gestoria'] = $foreach_g_gestoria_Sav;
 }
 ?>
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['sumGastosG']->value;?>
+</span></li>
           <?php } else { ?>
           <li class="list-group-item">Sin datos</li>
           <?php }?>
-        </ul>
-
-
-        <!-- Otros Gastos -->
-        <ul class="list-group">
-          <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
-        <?php if (isset($_smarty_tpl->tpl_vars['arrGastosOtros']->value)) {?>
-          <?php
-$_from = $_smarty_tpl->tpl_vars['arrGastosOtros']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$_smarty_tpl->tpl_vars['gasto'] = new Smarty_Variable;
-$_smarty_tpl->tpl_vars['gasto']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['gasto']->value) {
-$_smarty_tpl->tpl_vars['gasto']->_loop = true;
-$foreach_gasto_Sav = $_smarty_tpl->tpl_vars['gasto'];
-?>
-            <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['gasto']->value['observacion'];?>
-<span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['gasto']->value['monto'];?>
-</span> <span class="badge"><?php echo $_smarty_tpl->tpl_vars['gasto']->value['usrPago'];?>
-</span> <button id="<?php echo $_smarty_tpl->tpl_vars['gasto']->value['id'];?>
-" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
-          <?php
-$_smarty_tpl->tpl_vars['gasto'] = $foreach_gasto_Sav;
-}
-?>
-        <?php } else { ?>
-        <li class="list-group-item">Sin datos</li>
-        <?php }?>
-
         </ul>
 
       </div>
@@ -195,15 +215,17 @@ foreach ($_from as $_smarty_tpl->tpl_vars['gastoInfr']->value) {
 $_smarty_tpl->tpl_vars['gastoInfr']->_loop = true;
 $foreach_gastoInfr_Sav = $_smarty_tpl->tpl_vars['gastoInfr'];
 ?>
-              <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['observacion'];?>
+              <li class="list-group-item"><button id="<?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['id'];?>
+" class="btn btn-xs btn-danger deleteGInfr"><span class="glyphicon glyphicon-trash"><span></button> <?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['observacion'];?>
 <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['monto'];?>
 </span> <span class="badge"><?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['usrPago'];?>
-</span><button id="<?php echo $_smarty_tpl->tpl_vars['gastoInfr']->value['id'];?>
-" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"><span></button></li>
+</span></li>
             <?php
 $_smarty_tpl->tpl_vars['gastoInfr'] = $foreach_gastoInfr_Sav;
 }
 ?>
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['sumGastosInfr']->value;?>
+</span></li>
           <?php } else { ?>
           <li class="list-group-item">Sin datos</li>
           <?php }?>
@@ -212,7 +234,98 @@ $_smarty_tpl->tpl_vars['gastoInfr'] = $foreach_gastoInfr_Sav;
 
         </div><!-- /.col -->
       </div><!-- /.row -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Otros Gastos -->
+          <ul class="list-group">
+            <li class="list-group-item active">Otros gastos <button class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></button></li>
+          <?php if (isset($_smarty_tpl->tpl_vars['arrGastosOtros']->value)) {?>
+            <?php
+$_from = $_smarty_tpl->tpl_vars['arrGastosOtros']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['gasto'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['gasto']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['gasto']->value) {
+$_smarty_tpl->tpl_vars['gasto']->_loop = true;
+$foreach_gasto_Sav = $_smarty_tpl->tpl_vars['gasto'];
+?>
+              <li class="list-group-item"><button id="<?php echo $_smarty_tpl->tpl_vars['gasto']->value['id'];?>
+" class="btn btn-xs btn-danger pull-right deleteGO"><span class="glyphicon glyphicon-trash"><span></button> <?php echo $_smarty_tpl->tpl_vars['gasto']->value['observacion'];?>
+<span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['gasto']->value['monto'];?>
+</span> <span class="badge"><?php echo $_smarty_tpl->tpl_vars['gasto']->value['usrPago'];?>
+</span></li>
+            <?php
+$_smarty_tpl->tpl_vars['gasto'] = $foreach_gasto_Sav;
+}
+?>
+            <li class="list-group-item list-group-item-warning">Total: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['sumGastosO']->value;?>
+</span></li>
+          <?php } else { ?>
+          <li class="list-group-item">Sin datos</li>
+          <?php }?>
+
+          </ul>
+        </div>
+      </div>
+
     </div><!-- /.container -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Resumenes de gastos</h4>
+          <?php if (isset($_smarty_tpl->tpl_vars['arrGastosPorUsr']->value)) {?>
+            <?php $_smarty_tpl->tpl_vars["sumGastos"] = new Smarty_Variable("0", null, 0);?>
+            <?php
+$_from = $_smarty_tpl->tpl_vars['arrGastosPorUsr']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['datosGastos'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['datosGastos']->_loop = false;
+$_smarty_tpl->tpl_vars['userGasto'] = new Smarty_Variable;
+foreach ($_from as $_smarty_tpl->tpl_vars['userGasto']->value => $_smarty_tpl->tpl_vars['datosGastos']->value) {
+$_smarty_tpl->tpl_vars['datosGastos']->_loop = true;
+$foreach_datosGastos_Sav = $_smarty_tpl->tpl_vars['datosGastos'];
+?>
+              <?php $_smarty_tpl->tpl_vars['sumGastos'] = new Smarty_Variable(0, null, 0);?>
+            <div>
+              <ul>
+              <?php
+$_from = $_smarty_tpl->tpl_vars['datosGastos']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['montoGasto'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['montoGasto']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['montoGasto']->value) {
+$_smarty_tpl->tpl_vars['montoGasto']->_loop = true;
+$foreach_montoGasto_Sav = $_smarty_tpl->tpl_vars['montoGasto'];
+?>
+                  <?php $_smarty_tpl->tpl_vars['sumGastos'] = new Smarty_Variable($_smarty_tpl->tpl_vars['sumGastos']->value+$_smarty_tpl->tpl_vars['montoGasto']->value, null, 0);?>
+              <?php
+$_smarty_tpl->tpl_vars['montoGasto'] = $foreach_montoGasto_Sav;
+}
+?>
+                  <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['userGasto']->value;?>
+ <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['sumGastos']->value;?>
+</span></li>
+              </ul>
+            </div>
+            <?php
+$_smarty_tpl->tpl_vars['datosGastos'] = $foreach_datosGastos_Sav;
+}
+?>
+
+          <?php } else { ?>
+          <p>Sin datos</p>
+          <?php }?>
+        </div>
+      </div>
+    </div>
 
     <?php echo $_smarty_tpl->getSubTemplate ('comprados/modalAddInfr.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
@@ -221,6 +334,9 @@ $_smarty_tpl->tpl_vars['gastoInfr'] = $foreach_gastoInfr_Sav;
 ?>
 
     <?php echo $_smarty_tpl->getSubTemplate ('comprados/modalAddGastosOtros.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
+    <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddValorCalle.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
 

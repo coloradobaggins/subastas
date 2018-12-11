@@ -122,7 +122,16 @@
                                         </div>
                                         <div class="col-md-6">
                                           <h4>Caucion</h4>
-                                          <p>$ 5.000 <span class="label label-success">Pagada</span></p>
+                                          <p>$ {$auto.caucion}
+                                            {if $auto.caucion_paga == 1}
+                                              <span class="label label-success"> PAGA </span>
+                                            {else}
+                                              <span class="label label-danger"> IMPAGA </span>
+                                            {/if}
+                                          </p>
+
+
+
                                         </div>
                                       </div><!-- /.row -->
 

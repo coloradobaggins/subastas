@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-02 23:31:16
+<?php /* Smarty version 3.1.27, created on 2018-12-11 08:39:48
          compiled from "C:\xampp\htdocs\subastas\styles\templates\verAutos\modalAddAutoSubasta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:6151407885c049574230fb7_39970069%%*/
+/*%%SmartyHeaderCode:7369781545c0fa204e375d8_82417853%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ab185dad0b810f2fba1eaceb982f63253f2a9b30' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\verAutos\\modalAddAutoSubasta.tpl',
-      1 => 1543804186,
+      1 => 1544453170,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6151407885c049574230fb7_39970069',
+  'nocache_hash' => '7369781545c0fa204e375d8_82417853',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c049574234e31_78953036',
+  'unifunc' => 'content_5c0fa204e3f2d0_83006396',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c049574234e31_78953036')) {
-function content_5c049574234e31_78953036 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c0fa204e3f2d0_83006396')) {
+function content_5c0fa204e3f2d0_83006396 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
+$_smarty_tpl->properties['nocache_hash'] = '7369781545c0fa204e375d8_82417853';
 ?>
 <!-- Modal -->
 <div id="modalAddAutoSubasta" class="modal fade" role="dialog">
@@ -87,8 +87,14 @@ $_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
                                     <label class="sr-only" for="ubi">Ubicacion</label>
                                     <input type="text" id="ubi" name="ubi" class="form-control" placeholder="Ubicacion">
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="caucion">Seguro caucion</label>
+                                    <input type="text" id="caucion" name="caucion" class="form-control" placeholder="Seguro caucion">
+                                </div>
                               </div>
-                              <div class="col-md-3">
+
+                              <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="sr-only" for="vendedor">Vendedor</label>
                                   <select id="vendedor" name="vendedor" class="form-control">
@@ -97,13 +103,22 @@ $_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-3">
-                                <p>Comision 10%</p>
+
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="sr-only" for="caucion_paga">Caucion Paga?</label>
+                                  <select id="caucion_paga" name="caucion_paga" class="form-control">
+                                    <option value="">Caucion paga?</option>
+                                    <option value="0">NO</option>
+                                    <option value="1">SI</option>
+                                  </select>
+                                </div>
                               </div>
+
                             </div><!-- /.row -->
 
                             <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="comb">Combustible</label>
                                   <select id="comb" name="comb" class="form-control">
@@ -114,7 +129,7 @@ $_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="arranca">Arranca</label>
                                   <select id="arranca" name="arranca" class="form-control">
@@ -123,7 +138,7 @@ $_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label class="" for="ivaI">Iva Incluido</label>
                                   <select id="ivaI" name="ivaI" class="form-control">
@@ -131,6 +146,9 @@ $_smarty_tpl->properties['nocache_hash'] = '6151407885c049574230fb7_39970069';
                                     <option value="1">No</option>
                                   </select>
                                 </div>
+                              </div>
+                              <div class="col-md-3">
+                                <p class="label label-warning">Comision 10%</p>
                               </div>
                             </div><!-- /.row -->
 
