@@ -85,6 +85,7 @@ $contVal = 0;
 foreach($arrValores as $idValor => $datosV){
 	$sumVal+= $datosV["valor"];
 	$contVal++;
+	if($datosV["url"]==""){$arrValores[$idValor]["url"]= "Sin descripcion";}
 }
 if($contVal != 0){
 	$promVal = $sumVal / $contVal;
