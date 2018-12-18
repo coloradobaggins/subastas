@@ -16,6 +16,14 @@
 
 class SubastaGastosOtros
 {
+  private $idAuto;
+  private $observacion;
+  private $monto;
+  private $fecha;
+  private $hora;
+  private $id_usuario;
+  private $estado;
+
   private $objConexion;
     public function __construct(){
         $this->objConexion = Conexion::getInstance();
@@ -62,6 +70,25 @@ class SubastaGastosOtros
       $stmt->close();
 
       return $arrayResponse;
+    }
+
+
+    public function addOtrosGastoSubasta($idAutoSubasta){
+
+      $obs = $this->observacion;
+      $monto = $this->monto;
+
+
+      $fechaCarga = date("Y-m-d");
+      $horaCarga = date("H:i:s");
+      $userCarga = $_SESSION["id"];
+
+
+
+      $sql = "INSERT INTO subastas_gastos_otros(idAutoSubasta, observacion, monto, fecha, hora, id_usuario, estado)
+                      VALUES(?,?,?,?,?,?,1)";
+      $stmt = $this->objConexion->mysqli->prepare($sql);
+      $stmt->bind_param('isissi', $idAutoSubasta );
     }
 }
 

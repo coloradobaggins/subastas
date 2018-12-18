@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-11 09:14:21
+<?php /* Smarty version 3.1.27, created on 2018-12-18 00:07:43
          compiled from "C:\xampp\htdocs\subastas\styles\templates\autoDetalle.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:19903292625c0faa1daf13c5_50916660%%*/
+/*%%SmartyHeaderCode:13398139495c18647f8bda60_66944643%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'badba62c446b3636fddcc960b98fcbf20991f018' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\autoDetalle.tpl',
-      1 => 1544453170,
+      1 => 1545102462,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19903292625c0faa1daf13c5_50916660',
+  'nocache_hash' => '13398139495c18647f8bda60_66944643',
   'variables' => 
   array (
     'arrDetallesAuto' => 0,
@@ -28,13 +28,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c0faa1db6a563_72130367',
+  'unifunc' => 'content_5c18647f952199_07121113',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c0faa1db6a563_72130367')) {
-function content_5c0faa1db6a563_72130367 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c18647f952199_07121113')) {
+function content_5c18647f952199_07121113 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '19903292625c0faa1daf13c5_50916660';
+$_smarty_tpl->properties['nocache_hash'] = '13398139495c18647f8bda60_66944643';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,7 +51,7 @@ $_smarty_tpl->properties['nocache_hash'] = '19903292625c0faa1daf13c5_50916660';
 
 
     <div class="logo-container">
-      <h2>Detalle Auto Subasta</h2>
+      <h2>Detalle Auto Subasta <button class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span></button></h2>
     </div>
 
     <div class="container">
@@ -185,7 +185,7 @@ $_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
         <div class="col-md-4">
 
               <ul class="list-group">
-                <li class="list-group-item active">Gastos aprox</li>
+                <li class="list-group-item active">Gastos aprox <button class="btn btn-xs btn-warning pull-right"><span class="glyphicon glyphicon-pencil"></span></button></li>
                 <li class="list-group-item">Debe Patente: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_patente'];?>
 </span></li>
                 <li class="list-group-item">Debe. CABA: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_infr_caba'];?>

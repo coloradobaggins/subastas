@@ -9,7 +9,7 @@
   {include 'overall/nav.tpl'}
 
     <div class="logo-container">
-      <h2>Detalle Auto Subasta</h2>
+      <h2>Detalle Auto Subasta <button class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span></button></h2>
     </div>
 
     <div class="container">
@@ -107,7 +107,7 @@
         <div class="col-md-4">
 
               <ul class="list-group">
-                <li class="list-group-item active">Gastos aprox</li>
+                <li class="list-group-item active">Gastos aprox <button class="btn btn-xs btn-warning pull-right"><span class="glyphicon glyphicon-pencil"></span></button></li>
                 <li class="list-group-item">Debe Patente: <span class="badge">$ {$arrDetallesAuto.deuda_patente}</span></li>
                 <li class="list-group-item">Debe. CABA: <span class="badge">$ {$arrDetallesAuto.deuda_infr_caba}</span></li>
                 <li class="list-group-item">Debe. BSAS: <span class="badge">$ {$arrDetallesAuto.deuda_infr_bsas}</span></li>
