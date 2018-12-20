@@ -124,7 +124,7 @@
 
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item active">Otros gastos</li>
+            <li class="list-group-item active">Otros gastos <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right addOtrosGastos"><span class="glyphicon glyphicon-plus"></span></buttn></li>
             {if isset($arrayOtrosGastosSubastas)}
               {foreach from=$arrayOtrosGastosSubastas item=gastoO}
                 <li class="list-group-item">{$gastoO.observacion} <span class="badge">{$gastoO.monto}</span></li>
@@ -149,6 +149,7 @@
 
     {include 'overall/footer.tpl'}
     <script src="styles/js/verAutos.js"></script>
+    <script src="styles/js/autoDetalle.js"></script>
 
 </body>
 </html>

@@ -10,7 +10,7 @@
 
 /*********
 *
-* OTROS GASTOS PARA SUBASTA Y COMPRADOS!
+* OTROS GASTOS PARA SUBASTA
 *
 **********/
 
@@ -88,7 +88,13 @@ class SubastaGastosOtros
       $sql = "INSERT INTO subastas_gastos_otros(idAutoSubasta, observacion, monto, fecha, hora, id_usuario, estado)
                       VALUES(?,?,?,?,?,?,1)";
       $stmt = $this->objConexion->mysqli->prepare($sql);
-      $stmt->bind_param('isissi', $idAutoSubasta );
+      $stmt->bind_param('isissi', $idAutoSubasta, $obs, $monto, $fechaCarga, $horaCarga, $userCarga);
+      $stmt->execute();
+      if(!$stmt->errno){
+        echo 1;
+      }else{
+        throw new Exception("Error al cargar gasto otro, ".$stmt->error, $stmt->errno);
+      }
     }
 }
 

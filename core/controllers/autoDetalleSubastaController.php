@@ -97,7 +97,7 @@ if($contVal != 0){
 	if(!empty($arrGastosAdm)){$template->assign("arrGastosAdm", $arrGastosAdm);}
 	if(!empty($arrGastosTotales)){$template->assign("arrGastosTotales", $arrGastosTotales);}
 	if(!empty($arrayOtrosGastosSubastas)){$template->assign("arrayOtrosGastosSubastas", $arrayOtrosGastosSubastas);}
-  $template->display('autoDetalle.tpl');
+  $template->display('autoSubastaDetalle.tpl');
 }else{
 	echo "Sesion caduco";
 }

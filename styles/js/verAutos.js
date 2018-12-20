@@ -217,6 +217,8 @@ $(".disableAuto").click(function(){
 });
 
 
+//TODO:: AGREGAR FUNCIONALIDAD GASTOS OTROS EN SUBASTA!!
+
 
 //Agregar auto a subasta
 $("#btnAddAutoSubasta").click(function(){
