@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-23 12:40:12
+<?php /* Smarty version 3.1.27, created on 2018-12-23 15:13:34
          compiled from "C:\xampp\htdocs\subastas\styles\templates\verAutos\modalAddGastosOtros.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:8867214735c1fac5c482806_54136532%%*/
+/*%%SmartyHeaderCode:19779286785c1fd04ea73176_58905051%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'af20f6dba9f37e26bf3483b46cc9630acfe6aa7a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\verAutos\\modalAddGastosOtros.tpl',
-      1 => 1545579610,
+      1 => 1545588634,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8867214735c1fac5c482806_54136532',
+  'nocache_hash' => '19779286785c1fd04ea73176_58905051',
   'variables' => 
   array (
     'arrUsrs' => 0,
@@ -22,13 +22,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c1fac5c4d4897_19967747',
+  'unifunc' => 'content_5c1fd04eaccf17_77283656',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c1fac5c4d4897_19967747')) {
-function content_5c1fac5c4d4897_19967747 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c1fd04eaccf17_77283656')) {
+function content_5c1fd04eaccf17_77283656 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '8867214735c1fac5c482806_54136532';
+$_smarty_tpl->properties['nocache_hash'] = '19779286785c1fd04ea73176_58905051';
 ?>
 <!-- Modal -->
 <div id="modalAddGO" class="modal fade" role="dialog">
@@ -79,15 +79,9 @@ $_smarty_tpl->tpl_vars['usr'] = $foreach_usr_Sav;
                                 <label for="detalle">Detalle</label>
                                 <textarea id="detalle" name="detalle" class="form-control"></textarea>
                             </div>
+
                             <div class="form-group">
-                                <label for="pagado">Esta paga?</label>
-                                <select id="pagado" name="pagado" class="form-control">
-                                    <option vaule="0">No</option>
-                                    <option value="1">Si</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="fPago">Fecha de pago (Si aplica)</label>
+                                <label for="fPago">Fecha de pago (si aplica)</label>
                                 <input type="text" id="fPago" name="fPago" class="form-control" placeholder="Fecha de pago (Si aplica)">
                             </div>
                         </div>

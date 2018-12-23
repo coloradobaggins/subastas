@@ -45,6 +45,7 @@ if(isset($_SESSION['user'])){
 	if(count($arrayOtrosGastosSubastas)>0){
 		foreach($arrayOtrosGastosSubastas as $idGastos => $datosGasto){
 				$sumOtrosGastos += $datosGasto["monto"];
+				$arrayOtrosGastosSubastas[$idGastos]["usuario_pago"] = $arrUsuarios[$datosGasto["id_usuario_pago"]]["nombre"];
 		}
 	}
 	echo "gastos otros!!";

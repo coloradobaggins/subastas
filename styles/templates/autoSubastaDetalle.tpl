@@ -127,7 +127,7 @@
             <li class="list-group-item active">Otros gastos <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right addOtrosGastos" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></buttn></li>
             {if isset($arrayOtrosGastosSubastas)}
               {foreach from=$arrayOtrosGastosSubastas item=gastoO}
-                <li class="list-group-item">{$gastoO.observacion} <span class="badge">{$gastoO.monto}</span></li>
+                <li class="list-group-item">{$gastoO.observacion} <button id="{$gastoO.id}" class="btn btn-xs btn-danger pull-left borrarGO"><span class="glyphicon glyphicon-trash"></span></button><span class="badge">{$gastoO.usuario_pago}</span><span class="badge">{$gastoO.monto}</span></li>
               {/foreach}
             {/if}
           </ul>

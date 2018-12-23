@@ -8,6 +8,7 @@
  * Time: 00:36
  */
  include('core/models/AutosSubasta.class.php');
+ include('core/models/SubastaGastosOtros.class.php');
 
 if(isset($_SESSION['user'])){
 
@@ -30,7 +31,7 @@ if(isset($_SESSION['user'])){
       "iva_incluido"          => $ivaI,
       "comision"              => 10,
       "seguro_caucion"        => $caucion,
-      "caucion_paga"          => $caucion_paga,       
+      "caucion_paga"          => $caucion_paga,
       "observacion"           => $obs,
       "deuda_patente"         => $d_pat,
       "deuda_infr_caba"       => $d_inf_caba,
@@ -63,8 +64,36 @@ if(isset($_SESSION['user'])){
   }
 
 
+  /*************
+  * Add gastos otros auto subasta
+  *************/
+  if(isset($_POST["addGastoO"])){
+    extract($_POST);
 
-  //Disable
+    $objSubGO = new SubastaGastosOtros();
+
+    try{
+      echo $objSubGO->addOtrosGastoSubasta($idAuto, $detalle, $monto, $userPago, $fPago);
+    }catch(Exception $e){
+      echo $e->getMessage()." ".$e->getCode();
+    }
+
+  }
+
+
+  /*************
+  * Delete gastos otros auto subasta
+  *************/
+  if(isset($_POST["borrarGO"])){
+
+    $objSubGO = new SubastaGastosOtros();
+
+    try{
+      echo $objSubGO->deleteGO($_POST["idGasto"]);
+    }catch(Exception $e){
+      echo $e->getMessage()." ".$e->getCode();
+    }
+  }
 
 
 }else{

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-23 12:31:48
+<?php /* Smarty version 3.1.27, created on 2018-12-23 16:47:28
          compiled from "C:\xampp\htdocs\subastas\styles\templates\autoSubastaDetalle.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:19388877475c1faa645cf3a8_87153571%%*/
+/*%%SmartyHeaderCode:4467123925c1fe6502ac8f4_03651130%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '09ea0613c9b01145c2a67df109088045280a4004' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\autoSubastaDetalle.tpl',
-      1 => 1545579105,
+      1 => 1545593894,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19388877475c1faa645cf3a8_87153571',
+  'nocache_hash' => '4467123925c1fe6502ac8f4_03651130',
   'variables' => 
   array (
     'arrDetallesAuto' => 0,
@@ -28,13 +28,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c1faa646540c5_78164351',
+  'unifunc' => 'content_5c1fe650329913_79734295',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c1faa646540c5_78164351')) {
-function content_5c1faa646540c5_78164351 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c1fe650329913_79734295')) {
+function content_5c1fe650329913_79734295 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '19388877475c1faa645cf3a8_87153571';
+$_smarty_tpl->properties['nocache_hash'] = '4467123925c1fe6502ac8f4_03651130';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -226,7 +226,9 @@ $_smarty_tpl->tpl_vars['gastoO']->_loop = true;
 $foreach_gastoO_Sav = $_smarty_tpl->tpl_vars['gastoO'];
 ?>
                 <li class="list-group-item"><?php echo $_smarty_tpl->tpl_vars['gastoO']->value['observacion'];?>
- <span class="badge"><?php echo $_smarty_tpl->tpl_vars['gastoO']->value['monto'];?>
+ <button id="<?php echo $_smarty_tpl->tpl_vars['gastoO']->value['id'];?>
+" class="btn btn-xs btn-danger pull-left borrarGO"><span class="glyphicon glyphicon-trash"></span></button><span class="badge"><?php echo $_smarty_tpl->tpl_vars['gastoO']->value['usuario_pago'];?>
+</span><span class="badge"><?php echo $_smarty_tpl->tpl_vars['gastoO']->value['monto'];?>
 </span></li>
               <?php
 $_smarty_tpl->tpl_vars['gastoO'] = $foreach_gastoO_Sav;

@@ -220,17 +220,21 @@ $(".disableAuto").click(function(){
 * - Add Gastos Otros
 ********************/
 $("#btnSendGastoO").click(function(){
-  if($("#idAuto").val()!=0){
+  if($("#formAddGO").find("#idAuto").val()!=0){
 
     var serializedForm = $("#formAddGO").serialize();
+    console.log(serializedForm);
 
     $.ajax({
-      url:,
-      data:,
+      url:"?view=autosSubasta/abmAutosSubasta",
+      data:"addGastoO=true&"+serializedForm,
       type:"post",
       dataType:"text",
       success:function(response){
         console.log(response);
+        if(response==1){
+          location.reload();
+        }
       },
       timeout:4000,
       error:function(){

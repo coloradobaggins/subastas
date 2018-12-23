@@ -30,3 +30,30 @@ function addValuesToEditModalGastos(txt_pat, txt_caba, txt_bsas){
   $("#modalEditGastosAproxSub").find("#d_inf_caba").val(txt_caba); //Debe caba
   $("#modalEditGastosAproxSub").find("#d_inf_bsas").val(txt_bsas); //Debe bsas
 }
+
+
+/******************************
+* Borrar gastos otros
+******************************/
+$(".borrarGO").click(function(){
+  if(confirm("borrar este gasto?")){
+    var idGasto = this.id;
+
+    $.ajax({
+      url:"?view=autosSubasta/abmAutosSubasta",
+      data:"borrarGO=true&idGasto="+idGasto,
+      type:"post",
+      dataType:"text",
+      success:function(response){
+        console.log(response);
+        if(response==1){
+          location.reload();
+        }
+      },
+      timeout:4000,
+      error:function(){
+        alert("Error de conexion, intentelo mas tarde");
+      }
+    });
+  }
+});

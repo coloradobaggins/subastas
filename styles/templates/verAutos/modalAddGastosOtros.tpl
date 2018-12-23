@@ -32,15 +32,9 @@
                                 <label for="detalle">Detalle</label>
                                 <textarea id="detalle" name="detalle" class="form-control"></textarea>
                             </div>
+
                             <div class="form-group">
-                                <label for="pagado">Esta paga?</label>
-                                <select id="pagado" name="pagado" class="form-control">
-                                    <option vaule="0">No</option>
-                                    <option value="1">Si</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="fPago">Fecha de pago (Si aplica)</label>
+                                <label for="fPago">Fecha de pago (si aplica)</label>
                                 <input type="text" id="fPago" name="fPago" class="form-control" placeholder="Fecha de pago (Si aplica)">
                             </div>
                         </div>
