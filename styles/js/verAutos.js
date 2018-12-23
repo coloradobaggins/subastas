@@ -210,7 +210,7 @@ $("#btnBuyCar").click(function(){
 
 //Desactivar Auto subasta (Eliminar del listado)
 $(".disableAuto").click(function(){
-  if(confirm("Eliminar del lisado? Este auto no se volvera a mostrar")){
+  if(confirm("Eliminar del listado? Este auto no se volvera a mostrar")){
       alert("Desactivar auto id: "+this.id);
   }
 

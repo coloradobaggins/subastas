@@ -72,12 +72,28 @@ if(isset($_SESSION['user'])){
 
 	//Gastos otros
 	if(isset($_POST['deleteGastoO'])){
+		extract($_POST);
 
+		$objGastosO = new AutosGastosOtros(0);
+
+		try{
+			echo $objGastosO->deleteGasto($idGasto);
+		}catch(Exception $e){
+			echo $e->getMessage() . " " . $e->getCode();
+		}
 	}
 
 	//Gastos infraccion
 	if(isset($_POST['deleteGastoInfr'])){
+		extract($_POST);
 
+		$objGastosInfr = new AutosGastosInfr(0);
+
+		try{
+			echo $objGastosInfr->deleteInfraccion($idGasto);
+		}catch(Exception $e){
+			echo $e->getMessage() . " " . $e->getCode();
+		}
 	}
 
 

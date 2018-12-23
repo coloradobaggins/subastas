@@ -107,7 +107,7 @@
         <div class="col-md-4">
 
               <ul class="list-group">
-                <li class="list-group-item active">Gastos aprox <button class="btn btn-xs btn-warning pull-right"><span class="glyphicon glyphicon-pencil"></span></button></li>
+                <li class="list-group-item active">Gastos aprox <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right edit-gastos-aprox" data-target="#modalEditGastosAproxSub" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></button></li>
                 <li class="list-group-item">Debe Patente: <span class="badge">$ {$arrDetallesAuto.deuda_patente}</span></li>
                 <li class="list-group-item">Debe. CABA: <span class="badge">$ {$arrDetallesAuto.deuda_infr_caba}</span></li>
                 <li class="list-group-item">Debe. BSAS: <span class="badge">$ {$arrDetallesAuto.deuda_infr_bsas}</span></li>
@@ -145,6 +145,7 @@
     </div>
     {include 'verAutos/modalAddPuja.tpl'}
     {include 'verAutos/modalAddValorCalle.tpl'}
+    {include 'verAutos/modalEditGastosAproxSub.tpl'}
 
 
     {include 'overall/footer.tpl'}

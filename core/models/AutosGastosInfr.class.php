@@ -95,10 +95,14 @@ class AutosGastosInfr{
 	}
 
   //CORREGIR, QUE NO SE BORRE, QUE CAMBIE EL ESTADO A 0
-  public function deleteInfraccion($idInfr){
-		$sql = "DELETE FROM autos_gastos_infracciones WHERE id = ?";
+  public function deleteInfraccion($idGasto){
+		//$sql = "DELETE FROM autos_gastos_infracciones WHERE id = ?";
+    $nuevoEstado = 0;
+    $sql = "UPDATE autos_gastos_infracciones
+            SET estado = ?
+            WHERE id = ?";
 		$stmt = $this->objConexion->mysqli->prepare($sql);
-		$stmt->bind_param("i", $idInfr);
+		$stmt->bind_param("ii", $nuevoEstado, $idGasto);
 		$stmt->execute();
 		if(!$stmt->errno){
 			return 1;

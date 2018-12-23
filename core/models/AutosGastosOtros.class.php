@@ -57,7 +57,7 @@ class AutosGastosOtros{
 
   public function getGastos($f_estado=1){
     $idAuto = $this->id_auto;
-    
+
     $arrayResponse = array();
     $sql = "SELECT id, id_auto, id_usuario_pago, monto, observacion, pagado, fechaPago
             FROM autos_gastos_otros
@@ -86,9 +86,13 @@ class AutosGastosOtros{
   }
 
   public function deleteGasto($idGasto){
-    $sql = "DELETE FROM autos_gastos_otros WHERE id = ?";
+    //$sql = "DELETE FROM autos_gastos_otros WHERE id = ?";
+    $nuevoEstado = 0;
+    $sql = "UPDATE autos_gastos_otros
+            SET estado = ?
+            WHERE id = ?";
     $stmt = $this->objConexion->mysqli->prepare($sql);
-    $stmt->bind_param('i', $idGasto);
+    $stmt->bind_param('ii', $nuevoEstado, $idGasto);
     $stmt->execute();
     if(!$stmt->errno){
       return 1;
