@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-23 03:34:45
+<?php /* Smarty version 3.1.27, created on 2018-12-23 12:31:48
          compiled from "C:\xampp\htdocs\subastas\styles\templates\autoSubastaDetalle.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:15961635775c1f2c85bcee65_14124620%%*/
+/*%%SmartyHeaderCode:19388877475c1faa645cf3a8_87153571%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '09ea0613c9b01145c2a67df109088045280a4004' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\autoSubastaDetalle.tpl',
-      1 => 1545546880,
+      1 => 1545579105,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15961635775c1f2c85bcee65_14124620',
+  'nocache_hash' => '19388877475c1faa645cf3a8_87153571',
   'variables' => 
   array (
     'arrDetallesAuto' => 0,
@@ -28,13 +28,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c1f2c85c4fd04_53041507',
+  'unifunc' => 'content_5c1faa646540c5_78164351',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c1f2c85c4fd04_53041507')) {
-function content_5c1f2c85c4fd04_53041507 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c1faa646540c5_78164351')) {
+function content_5c1faa646540c5_78164351 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '15961635775c1f2c85bcee65_14124620';
+$_smarty_tpl->properties['nocache_hash'] = '19388877475c1faa645cf3a8_87153571';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -187,12 +187,12 @@ $_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
               <ul class="list-group">
                 <li class="list-group-item active">Gastos aprox <button id="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
 " class="btn btn-xs btn-warning pull-right edit-gastos-aprox" data-target="#modalEditGastosAproxSub" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></button></li>
-                <li class="list-group-item">Debe Patente: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_patente'];?>
-</span></li>
-                <li class="list-group-item">Debe. CABA: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_infr_caba'];?>
-</span></li>
-                <li class="list-group-item">Debe. BSAS: <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_infr_bsas'];?>
-</span></li>
+                <li class="list-group-item">Debe Patente: <span class="badge">$ <span class="txt-pat"><?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_patente'];?>
+</span></span></li>
+                <li class="list-group-item">Debe. CABA: <span class="badge">$ <span class="txt-caba"><?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_infr_caba'];?>
+</span></span></li>
+                <li class="list-group-item">Debe. BSAS: <span class="badge">$ <span class="txt-bsas"><?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['deuda_infr_bsas'];?>
+</span></span></li>
                 <li class="list-group-item list-group-item-warning">Comision: <?php echo $_smarty_tpl->tpl_vars['auto']->value['comision'];?>
 % <span class="badge">$ <?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['comision_valor'];?>
 </span></li>
@@ -212,7 +212,7 @@ $_smarty_tpl->tpl_vars['valorAuto'] = $foreach_valorAuto_Sav;
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item active">Otros gastos <button id="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
-" class="btn btn-xs btn-warning pull-right addOtrosGastos"><span class="glyphicon glyphicon-plus"></span></buttn></li>
+" class="btn btn-xs btn-warning pull-right addOtrosGastos" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></buttn></li>
             <?php if (isset($_smarty_tpl->tpl_vars['arrayOtrosGastosSubastas']->value)) {?>
               <?php
 $_from = $_smarty_tpl->tpl_vars['arrayOtrosGastosSubastas']->value;
@@ -250,6 +250,9 @@ $_smarty_tpl->tpl_vars['gastoO'] = $foreach_gastoO_Sav;
 ?>
 
     <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddValorCalle.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
+?>
+
+    <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalAddGastosOtros.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 
     <?php echo $_smarty_tpl->getSubTemplate ('verAutos/modalEditGastosAproxSub.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);

@@ -108,9 +108,9 @@
 
               <ul class="list-group">
                 <li class="list-group-item active">Gastos aprox <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right edit-gastos-aprox" data-target="#modalEditGastosAproxSub" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></button></li>
-                <li class="list-group-item">Debe Patente: <span class="badge">$ {$arrDetallesAuto.deuda_patente}</span></li>
-                <li class="list-group-item">Debe. CABA: <span class="badge">$ {$arrDetallesAuto.deuda_infr_caba}</span></li>
-                <li class="list-group-item">Debe. BSAS: <span class="badge">$ {$arrDetallesAuto.deuda_infr_bsas}</span></li>
+                <li class="list-group-item">Debe Patente: <span class="badge">$ <span class="txt-pat">{$arrDetallesAuto.deuda_patente}</span></span></li>
+                <li class="list-group-item">Debe. CABA: <span class="badge">$ <span class="txt-caba">{$arrDetallesAuto.deuda_infr_caba}</span></span></li>
+                <li class="list-group-item">Debe. BSAS: <span class="badge">$ <span class="txt-bsas">{$arrDetallesAuto.deuda_infr_bsas}</span></span></li>
                 <li class="list-group-item list-group-item-warning">Comision: {$auto.comision}% <span class="badge">$ {$arrDetallesAuto.comision_valor}</span></li>
 
                 <li class="list-group-item list-group-item-warning">Gastos adm + IVA: <span class="badge">{if isset($arrGastosAdm)} $ {$arrGastosAdm.monto + $arrGastosAdm.montoIva} {else} N/A{/if}</span></li>
@@ -124,7 +124,7 @@
 
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item active">Otros gastos <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right addOtrosGastos"><span class="glyphicon glyphicon-plus"></span></buttn></li>
+            <li class="list-group-item active">Otros gastos <button id="{$arrDetallesAuto.id}" class="btn btn-xs btn-warning pull-right addOtrosGastos" data-toggle="modal" data-target="#modalAddGO"><span class="glyphicon glyphicon-plus"></span></buttn></li>
             {if isset($arrayOtrosGastosSubastas)}
               {foreach from=$arrayOtrosGastosSubastas item=gastoO}
                 <li class="list-group-item">{$gastoO.observacion} <span class="badge">{$gastoO.monto}</span></li>
@@ -145,6 +145,7 @@
     </div>
     {include 'verAutos/modalAddPuja.tpl'}
     {include 'verAutos/modalAddValorCalle.tpl'}
+    {include 'verAutos/modalAddGastosOtros.tpl'}
     {include 'verAutos/modalEditGastosAproxSub.tpl'}
 
 

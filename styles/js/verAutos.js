@@ -216,8 +216,35 @@ $(".disableAuto").click(function(){
 
 });
 
+/********************
+* - Add Gastos Otros
+********************/
+$("#btnSendGastoO").click(function(){
+  if($("#idAuto").val()!=0){
 
-//TODO:: AGREGAR FUNCIONALIDAD GASTOS OTROS EN SUBASTA!!
+    var serializedForm = $("#formAddGO").serialize();
+
+    $.ajax({
+      url:,
+      data:,
+      type:"post",
+      dataType:"text",
+      success:function(response){
+        console.log(response);
+      },
+      timeout:4000,
+      error:function(){
+        alert("Error de conexion, intentelo mas tarde");
+      }
+    });
+
+  }else{
+    alert("Ocurrio un problema al agregar otro gasto a este auto.");
+    console.log("No esta definido el ID del auto");
+  }
+});
+
+
 
 
 //Agregar auto a subasta

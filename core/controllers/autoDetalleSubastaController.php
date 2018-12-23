@@ -92,6 +92,7 @@ if($contVal != 0){
 }
 
 
+	if(!empty($arrUsuarios)){$template->assign("arrUsrs", $arrUsuarios);}
 	if(!empty($arrDetallesAuto)){$template->assign("arrDetallesAuto", $arrDetallesAuto);}
 	if(!empty($arrValores)){$template->assign("arrValores", $arrValores); $template->assign("promVal", $promVal);}
 	if(!empty($arrGastosAdm)){$template->assign("arrGastosAdm", $arrGastosAdm);}

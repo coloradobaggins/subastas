@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2018-12-23 03:42:09
+<?php /* Smarty version 3.1.27, created on 2018-12-23 12:06:40
          compiled from "C:\xampp\htdocs\subastas\styles\templates\verAutos\modalEditGastosAproxSub.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:6671105695c1f2e41465e68_51310559%%*/
+/*%%SmartyHeaderCode:1379218015c1fa480bef632_16718838%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5348d4cfd2a8493d3abe5beb58f5449bb38391ce' => 
     array (
       0 => 'C:\\xampp\\htdocs\\subastas\\styles\\templates\\verAutos\\modalEditGastosAproxSub.tpl',
-      1 => 1545547326,
+      1 => 1545547532,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6671105695c1f2e41465e68_51310559',
+  'nocache_hash' => '1379218015c1fa480bef632_16718838',
   'variables' => 
   array (
     'arrDetallesAuto' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_5c1f2e414a4677_28035022',
+  'unifunc' => 'content_5c1fa480ce1967_10986228',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_5c1f2e414a4677_28035022')) {
-function content_5c1f2e414a4677_28035022 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5c1fa480ce1967_10986228')) {
+function content_5c1fa480ce1967_10986228 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '6671105695c1f2e41465e68_51310559';
+$_smarty_tpl->properties['nocache_hash'] = '1379218015c1fa480bef632_16718838';
 ?>
 <!-- Modal -->
 <div id="modalEditGastosAproxSub" class="modal fade" role="dialog">
@@ -83,7 +83,7 @@ $_smarty_tpl->properties['nocache_hash'] = '6671105695c1f2e41465e68_51310559';
 
                       </div><!-- /-col -->
                     </div><!-- /.row -->
-                    <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
+                    <input id="idAuto" name="idAuto" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['arrDetallesAuto']->value['id'];?>
 ">
                     </form>
             </div>
