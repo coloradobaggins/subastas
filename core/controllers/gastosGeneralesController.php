@@ -21,7 +21,8 @@
 
 
    $objGastosGenerales = new GastosGenerales();
-   $defaultIniDate = date("Y")."-01-01"; //Siempre el primer dia del corriente anio como fecha inicial.
+   //$defaultIniDate = date("Y")."-01-01"; //Siempre el primer dia del corriente anio como fecha inicial.
+   $defaultIniDate = "2017-01-01"; //Siempre el primer dia del corriente anio como fecha inicial.
    try{
 
      $arrayGastos =$objGastosGenerales->getGastos($defaultIniDate, date("Y-m-d"));
@@ -59,11 +60,11 @@
 
 
 
-/*
+  /*
    echo "<pre>";
    print_r($arrayGastos);
-   echo "</pre>";*/
-
+   echo "</pre>";
+*/
 
    $template->assign("arrayGastos", $arrayGastos);
    $template->assign("arrayGastosUsr", $arrayGastosUsr);

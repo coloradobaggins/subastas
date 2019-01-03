@@ -26,7 +26,7 @@
       $f_estadoType = is_string($f_estado) ? 's' : 'i';
 
       $sql = "SELECT id, monto, observacion, id_usuario_pago, fechaCompra
-              FROM gastosGenerales
+              FROM gastosgenerales
               WHERE id_usuario_pago LIKE ?
               AND fechaCompra BETWEEN ? AND ?
               AND estado LIKE ?";
